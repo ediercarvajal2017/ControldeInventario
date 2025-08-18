@@ -50,9 +50,9 @@
         </main>
         <footer>
             <div class="footer-info">
-                <strong>Institución Educativa Ejemplo</strong><br>
-                Calle 123 #45-67, Ciudad, País<br>
-                Tel: (601) 123 4567
+                <span><strong>Institución Educativa Ejemplo</strong></span>
+                <span>Calle 123 #45-67, Ciudad, País</span>
+                <span>Tel: (601) 123 4567</span>
             </div>
         </footer>
     </body>
