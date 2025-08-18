@@ -1,0 +1,208 @@
+/* Título principal profesional */
+.header-flex h1 {
+    font-family: 'Segoe UI', 'Montserrat', Arial, sans-serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    letter-spacing: 1.2px;
+    color: #0077b6;
+    background: linear-gradient(90deg, #b2f7ef 0%, #e3fcec 100%);
+    border-radius: 12px;
+    padding: 0.3em 2.5em;
+    margin: 0.2em 0 0.2em 0;
+    box-shadow: 0 2px 12px #b2f7ef33;
+    display: block;
+    text-shadow: 0 2px 8px #b2f7ef44, 0 1px 0 #fff;
+    border: 2.5px solid #90e0ef;
+    width: 100%;
+    max-width: 600px;
+    min-width: 320px;
+    margin-left: 2em;
+    margin-right: 2em;
+}
+.header-flex {
+    gap: 1.5em;
+}
+/* Logo del colegio en el header */
+.logo-header {
+    display: flex;
+    align-items: center;
+    margin-right: 1.2em;
+}
+.logo-colegio {
+    width: 54px;
+    height: 54px;
+    object-fit: contain;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 1px 6px #b2f7ef33;
+}
+/* Header con usuario */
+.header-flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2em;
+}
+.usuario-header {
+    display: flex;
+    align-items: center;
+    gap: 0.7em;
+    background: #e3fcec;
+    border-radius: 18px;
+    padding: 0.3em 1em 0.3em 0.6em;
+    box-shadow: 0 1px 6px #b2f7ef33;
+}
+.avatar-usuario {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #90e0ef;
+    background: #fff;
+}
+.nombre-usuario {
+    font-weight: 700;
+    color: #198754;
+    font-size: 1.08em;
+    letter-spacing: 0.5px;
+}
+/* Menú de navegación principal */
+.main-nav {
+    background: linear-gradient(90deg, #b2f7ef 0%, #e3fcec 100%);
+    box-shadow: 0 2px 8px #b2f7ef33;
+    border-radius: 0 0 18px 18px;
+    margin: 0 auto 1.5em auto;
+    padding: 0.2em 0 0.2em 0;
+    display: flex;
+    justify-content: center;
+}
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 1.5em;
+}
+.main-nav li {
+    display: flex;
+    align-items: center;
+}
+.main-nav .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    font-size: 1.08em;
+    font-weight: 600;
+    color: #0077b6;
+    text-decoration: none;
+    padding: 0.6em 1.2em;
+    border-radius: 8px;
+    transition: background 0.2s, color 0.2s;
+}
+.main-nav .nav-link i {
+    font-size: 1.1em;
+    color: #198754;
+    transition: color 0.2s;
+}
+.main-nav .nav-link:hover, .main-nav .nav-link.active {
+    background: #0077b6;
+    color: #fff;
+}
+.main-nav .nav-link:hover i, .main-nav .nav-link.active i {
+    color: #fff;
+}
+/* Botones de acción con iconos */
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+    padding: 0.3em 0.7em;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    margin: 0 0.2em;
+}
+.action-edit {
+    background: #e3fcec;
+    color: #198754;
+    border: 1px solid #b7efc5;
+}
+.action-edit:hover {
+    background: #198754;
+    color: #fff;
+}
+.action-delete {
+    background: #fff0f3;
+    color: #d90429;
+    border: 1px solid #f7bfc6;
+}
+.action-delete:hover {
+    background: #d90429;
+    color: #fff;
+}
+.action-create {
+    background: #e0f7fa;
+    color: #0077b6;
+    border: 1px solid #b2e4f7;
+}
+.action-create:hover {
+    background: #0077b6;
+    color: #fff;
+}
+.action-btn img {
+    width: 20px;
+    height: 20px;
+    margin-right: 0.2em;
+}
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(120deg, #b2f7ef 0%, #a0c4ff 100%);
+    margin: 0;
+    color: #222;
+}
+header {
+    background: #48cae4;
+    color: #fff;
+    padding: 1rem 0 0.5rem 0;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(235, 5, 5, 0.911);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+main {
+    margin-top: 120px;
+}
+footer {
+    background: #90e0ef;
+    color: #222;
+    text-align: center;
+    padding: 1.2rem 0 1.2rem 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    box-shadow: 0 -2px 8px #b2f7ef33;
+    font-size: 1.08em;
+}
+.footer-info {
+    line-height: 1.5em;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+}
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 80vh;
+    padding: 2rem;
+    animation: fadeIn 1s ease;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}

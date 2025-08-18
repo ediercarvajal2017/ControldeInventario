@@ -1,0 +1,95 @@
+/* Botón profesional para ver factura (reutilizado de elementos) */
+.btn-ver-factura {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    background: linear-gradient(90deg, #b2f7ef 0%, #e3fcec 100%);
+    color: #0077b6;
+    border: 1.5px solid #90e0ef;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 1em;
+    padding: 0.4em 1em;
+    text-decoration: none;
+    box-shadow: 0 1px 6px #b2f7ef33;
+    transition: background 0.2s, color 0.2s, border 0.2s;
+}
+.btn-ver-factura i {
+    color: #198754;
+    font-size: 1.1em;
+}
+.btn-ver-factura:hover {
+    background: #0077b6;
+    color: #fff;
+    border-color: #198754;
+}
+.btn-ver-factura:hover i {
+    color: #fff;
+}
+/* Formulario pastel y profesional para espacios */
+.form-espacio {
+    background: #f8fff4;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(25, 135, 84, 0.07);
+    padding: 2em 2.5em 1.5em 2.5em;
+    margin: 2em auto;
+    max-width: 480px;
+    border: 1.5px solid #b2f7ef;
+}
+.form-espacio label {
+    display: block;
+    margin-bottom: 0.4em;
+    color: #198754;
+    font-weight: 600;
+    font-size: 1.05em;
+}
+.form-espacio input[type="text"] {
+    width: 100%;
+    padding: 0.6em 1em;
+    border: 1.5px solid #90e0ef;
+    border-radius: 6px;
+    background: #fff;
+    margin-bottom: 1.2em;
+    font-size: 1em;
+    color: #333;
+    transition: border 0.2s;
+}
+.form-espacio input[type="text"]:focus {
+    border-color: #198754;
+    outline: none;
+}
+.form-espacio .btn {
+    background: linear-gradient(90deg, #b2f7ef 0%, #e3fcec 100%);
+    color: #0077b6;
+    border: 1.5px solid #90e0ef;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 1em;
+    padding: 0.5em 1.5em;
+    cursor: pointer;
+    box-shadow: 0 1px 6px #b2f7ef33;
+    transition: background 0.2s, color 0.2s, border 0.2s;
+}
+.form-espacio .btn:hover {
+    background: #0077b6;
+    color: #fff;
+    border-color: #198754;
+}
+.mensaje-exito, .mensaje-error {
+    margin: 1em 0;
+    padding: 1em 1.5em;
+    border-radius: 8px;
+    font-size: 1.05em;
+    font-weight: 600;
+    box-shadow: 0 1px 6px #b2f7ef33;
+}
+.mensaje-exito {
+    background: #e3fcec;
+    color: #198754;
+    border: 1.5px solid #b2f7ef;
+}
+.mensaje-error {
+    background: #fff0f3;
+    color: #d32f2f;
+    border: 1.5px solid #f7b2b2;
+}

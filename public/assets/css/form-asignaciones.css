@@ -1,0 +1,267 @@
+/* Mensaje de error visual para confirmación */
+.mensaje-error {
+    background: linear-gradient(90deg, #fff0f3 0%, #f7bfc6 100%);
+    color: #d90429;
+    border: 2px solid #d90429;
+    border-radius: 10px;
+    font-size: 1.15em;
+    font-weight: 700;
+    text-align: center;
+    margin: 1.2em auto 0.7em auto;
+    padding: 0.7em 1.5em;
+    box-shadow: 0 2px 12px #f7bfc633;
+    max-width: 500px;
+    animation: fadeIn 0.7s;
+    letter-spacing: 0.5px;
+}
+/* Mensaje de éxito visual para confirmación */
+.mensaje-exito {
+    background: linear-gradient(90deg, #fff0f3 0%, #f7bfc6 100%);
+    color: #d90429;
+    border: 2px solid #d90429;
+    border-radius: 10px;
+    font-size: 1.15em;
+    font-weight: 700;
+    text-align: center;
+    margin: 1.2em auto 0.7em auto;
+    padding: 0.7em 1.5em;
+    box-shadow: 0 2px 12px #f7bfc633;
+    max-width: 500px;
+    animation: fadeIn 0.7s;
+    letter-spacing: 0.5px;
+}
+/* Modal de confirmación profesional para eliminar asignación */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(25, 135, 84, 0.18);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s;
+}
+.modal-confirmacion {
+    background: linear-gradient(120deg, #f8fff4 0%, #b2f7ef 100%);
+    border-radius: 18px;
+    box-shadow: 0 6px 32px #19875444;
+    padding: 2.2em 2.5em 1.5em 2.5em;
+    text-align: center;
+    min-width: 320px;
+    max-width: 90vw;
+    border: 2px solid #198754;
+}
+.modal-confirmacion h3 {
+    color: #d90429;
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+.modal-confirmacion p {
+    color: #145c32;
+    font-size: 1.08em;
+    margin-bottom: 1.2em;
+}
+.modal-btns {
+    display: flex;
+    justify-content: center;
+    gap: 1.5em;
+}
+.modal-btns .btn {
+    padding: 0.7em 1.7em;
+    border-radius: 7px;
+    font-size: 1em;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+.btn-cancelar {
+    background: #e0f7fa;
+    color: #0077b6;
+    border: 1px solid #b2e4f7;
+}
+.btn-cancelar:hover {
+    background: #0077b6;
+    color: #fff;
+}
+.btn-eliminar {
+    background: #d90429;
+    color: #fff;
+    border: 1px solid #f7bfc6;
+}
+.btn-eliminar:hover {
+    background: #fff0f3;
+    color: #d90429;
+}
+/* Título profesional para la vista de asignaciones */
+.titulo-asignaciones {
+    font-size: 2.3rem;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #198754;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-top: 1.2em;
+    margin-bottom: 0.7em;
+    text-align: center;
+    text-shadow: 0 2px 8px #b2f7ef88;
+    line-height: 1.1;
+    background: linear-gradient(90deg, #b2f7ef 0%, #e3fcec 100%);
+    border-radius: 12px;
+    padding: 0.5em 0.7em;
+    box-shadow: 0 1px 8px #b2f7ef33;
+    display: inline-block;
+    width: auto;
+    min-width: 60%;
+    max-width: 100%;
+}
+/* Separadores verticales profesionales para la tabla de asignaciones */
+.tabla-asignaciones-separada {
+    border-collapse: separate;
+    border-spacing: 0;
+    position: relative;
+}
+.tabla-asignaciones-separada th:not(:last-child),
+.tabla-asignaciones-separada td:not(:last-child) {
+    border-right: 2px solid #b2f7ef;
+    position: relative;
+}
+.tabla-asignaciones-separada th {
+    background: linear-gradient(90deg, #b2f7ef 0%, #e3fcec 100%);
+}
+.tabla-asignaciones-separada td {
+    background: #fff;
+}
+.tabla-asignaciones-separada tr:hover td {
+    background: #2196f3 !important;
+    color: #fff !important;
+}
+.tabla-asignaciones-separada th, .tabla-asignaciones-separada td {
+    min-width: 60px;
+    white-space: normal;
+    height: auto;
+}
+/* Efecto visual de separador vertical pastel */
+.tabla-asignaciones-separada th:not(:last-child)::after,
+.tabla-asignaciones-separada td:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -1px;
+    width: 2px;
+    height: 100%;
+    background: #198754;
+    border-radius: 2px;
+    opacity: 0.95;
+    box-shadow: 0 0 6px #19875433;
+    pointer-events: none;
+}
+/* Estilos para la tabla de asignaciones */
+.tabla-asignaciones {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #f8fff4;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(25, 135, 84, 0.07);
+    margin: 2em 0;
+    overflow: hidden;
+}
+.tabla-asignaciones th {
+    background: linear-gradient(90deg, #b2f7ef 0%, #e3fcec 100%);
+    color: #198754;
+    font-size: 1.1em;
+    font-weight: bold;
+    padding: 1em 0.7em;
+    border-bottom: 2px solid #b7efc5;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+.tabla-asignaciones td {
+    padding: 0.8em 0.7em;
+    border-bottom: 1px solid #e0f7fa;
+    background: #fff;
+    color: #333;
+    font-size: 1em;
+    transition: background 0.2s;
+    text-align: center;
+}
+.tabla-asignaciones tr:hover td {
+    background: #2196f3 !important; /* azul visible */
+    color: #fff !important;
+    transition: background 0.2s, color 0.2s;
+}
+.tabla-asignaciones tr:last-child td {
+    border-bottom: none;
+}
+.tabla-asignaciones th, .tabla-asignaciones td {
+    min-width: 60px;
+    max-width: none;
+    word-break: break-word;
+    white-space: normal;
+    height: auto;
+}
+/* Estilos específicos para el formulario de asignaciones */
+.form-asignacion {
+    background: #f8fff4;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(25, 135, 84, 0.08);
+    padding: 2em 2.5em;
+    max-width: 500px;
+    margin: 2em auto;
+    border: 1px solid #b7efc5;
+}
+.form-asignacion label {
+    display: block;
+    margin-bottom: 0.5em;
+    color: #198754;
+    font-weight: 600;
+    background: linear-gradient(90deg, #b2f7ef 0%, #e3fcec 100%);
+    padding: 0.35em 0.9em;
+    border-radius: 7px;
+    box-shadow: 0 1px 4px #b2f7ef33;
+    margin-top: 0.7em;
+    font-size: 1.04em;
+    letter-spacing: 0.2px;
+}
+.form-asignacion input[type="text"],
+.form-asignacion input[type="number"],
+.form-asignacion input[type="file"],
+.form-asignacion input[type="date"],
+.form-asignacion select {
+    width: 100%;
+    padding: 0.5em;
+    margin-bottom: 1.2em;
+    border: 1px solid #b7efc5;
+    border-radius: 5px;
+    font-size: 1em;
+    background: #e3fcec;
+    color: #222;
+    transition: border 0.2s;
+}
+.form-asignacion input:focus,
+.form-asignacion select:focus {
+    border-color: #0077b6;
+    box-shadow: 0 0 0 4px #90e0ef, 0 0 10px 2px #0077b6cc;
+    outline: none;
+    background: #caf0f8;
+    color: #0077b6;
+    transition: border 0.2s, box-shadow 0.2s, background 0.2s, color 0.2s;
+    font-weight: 600;
+}
+.form-asignacion .btn {
+    background: #198754;
+    color: #fff;
+    border: none;
+    padding: 0.7em 1.5em;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+    margin-top: 0.5em;
+}
+.form-asignacion .btn:hover {
+    background: #145c32;
+}
