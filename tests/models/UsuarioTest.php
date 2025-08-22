@@ -4,19 +4,28 @@ require_once __DIR__ . '/../../app/models/Usuario.php';
 
 class UsuarioTest extends TestCase
 {
+    public static function setUpBeforeClass(): void
+    {
+        $pdo = \App\Models\Conexion::conectar();
+        $pdo->exec('DELETE FROM usuarios');
+    }
     private static $idCreado;
 
     public function testCrearUsuario()
     {
         $data = [
-            'nombre' => 'Test Usuario',
-            'correo' => 'usuario@prueba.com',
+            'documento' => '123456789',
+            'nombres' => 'Test',
+            'apellidos' => 'Usuario',
+            'cargo' => 'Tester',
+            'username' => 'testusuario',
+            'password' => '123456',
             'rol' => 'admin',
-            'password' => '123456'
+            'activo' => 1
         ];
         $resultado = \App\Models\Usuario::create($data);
         $this->assertTrue($resultado);
-        $usuarios = \App\Models\Usuario::getAll();
+        $usuarios = \App\Models\Usuario::all();
         $ultimo = end($usuarios);
         self::$idCreado = $ultimo['id'] ?? null;
         $this->assertNotNull(self::$idCreado);
@@ -29,7 +38,7 @@ class UsuarioTest extends TestCase
     {
         $usuario = \App\Models\Usuario::getById(self::$idCreado);
         $this->assertIsArray($usuario);
-        $this->assertEquals('Test Usuario', $usuario['nombre']);
+    $this->assertEquals('Test', $usuario['nombres']);
     }
 
     /**
@@ -38,15 +47,18 @@ class UsuarioTest extends TestCase
     public function testActualizarUsuario()
     {
         $data = [
-            'nombre' => 'Usuario Actualizado',
-            'correo' => 'actualizado@prueba.com',
+            'documento' => '987654321',
+            'nombres' => 'Usuario',
+            'apellidos' => 'Actualizado',
+            'cargo' => 'QA',
+            'username' => 'usuarioactualizado',
             'rol' => 'user',
-            'password' => '654321'
+            'activo' => 1
         ];
         $resultado = \App\Models\Usuario::update(self::$idCreado, $data);
         $this->assertTrue($resultado);
         $usuario = \App\Models\Usuario::getById(self::$idCreado);
-        $this->assertEquals('Usuario Actualizado', $usuario['nombre']);
+        $this->assertEquals('Usuario', $usuario['nombres']);
     }
 
     /**

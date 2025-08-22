@@ -7,13 +7,13 @@ INSERT INTO instituciones (codigo_dane, nombre, direccion, tipo_sede) VALUES
 ('110002', 'Institución Educativa Sección Norte', 'Avenida 89 #12-34', 'Sección');
 
 -- Usuarios
-INSERT INTO usuarios (documento, nombres, apellidos, cargo, institucion_id, username, password, rol, activo) VALUES
+INSERT INTO usuarios (documento, nombres, apellidos, cargo, username, password, rol, activo) VALUES
 ('10000001', 'Ana', 'Rectora', 'Rector', 1, 'ana.rector', '$2y$10$EjemploHashRector', 'rector', 1),
 ('10000002', 'Luis', 'Secretario', 'Secretario', 1, 'luis.secretario', '$2y$10$EjemploHashSecretario', 'secretario', 1),
 ('10000003', 'Maria', 'Docente', 'Docente', 2, 'maria.docente', '$2y$10$EjemploHashDocente', 'docente', 1);
 
 -- Espacios
-INSERT INTO espacios (nombre, numeracion, institucion_id) VALUES
+INSERT INTO espacios (nombre, numeracion) VALUES
 ('Aula 101', '101', 1),
 ('Laboratorio de Ciencias', 'LAB01', 1),
 ('Sala de Profesores', 'SP01', 2);

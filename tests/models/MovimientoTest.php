@@ -4,6 +4,11 @@ require_once __DIR__ . '/../../app/models/Movimiento.php';
 
 class MovimientoTest extends TestCase
 {
+    public static function setUpBeforeClass(): void
+    {
+        $pdo = \App\Models\Conexion::conectar();
+        $pdo->exec('DELETE FROM movimientos');
+    }
     private static $idCreado;
 
     public function testCrearMovimiento()

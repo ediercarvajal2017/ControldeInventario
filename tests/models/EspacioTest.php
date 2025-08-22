@@ -4,6 +4,11 @@ require_once __DIR__ . '/../../app/models/Espacio.php';
 
 class EspacioTest extends TestCase
 {
+    public static function setUpBeforeClass(): void
+    {
+        $pdo = \App\Models\Conexion::conectar();
+        $pdo->exec('DELETE FROM espacios');
+    }
     private static $idCreado;
 
     public function testCrearEspacio()
@@ -11,7 +16,7 @@ class EspacioTest extends TestCase
         $data = [
             'nombre' => 'Test Espacio',
             'numeracion' => 'E-001',
-            // 'institucion_id' => null // Puedes agregarlo si es requerido
+            // ...existing code...
         ];
         $resultado = \App\Models\Espacio::create($data);
         $this->assertTrue($resultado);
@@ -39,7 +44,7 @@ class EspacioTest extends TestCase
         $data = [
             'nombre' => 'Espacio Actualizado',
             'numeracion' => 'E-002',
-            // 'institucion_id' => null // Puedes agregarlo si es requerido
+            // ...existing code...
         ];
         $resultado = \App\Models\Espacio::update(self::$idCreado, $data);
         $this->assertTrue($resultado);

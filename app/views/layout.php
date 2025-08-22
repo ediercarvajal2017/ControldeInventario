@@ -32,6 +32,9 @@
                     ?>
                     <img src="<?= htmlspecialchars($foto) ?>" alt="Avatar" class="avatar-usuario">
                     <span class="nombre-usuario"><?= htmlspecialchars($nombre) ?></span>
+                    <?php if ($usuario): ?>
+                        <a href="/ControldeInventario/public/logout" class="logout-link" style="margin-left:15px;color:#b30000;font-weight:bold;">Cerrar sesión <i class="fa fa-sign-out-alt"></i></a>
+                    <?php endif; ?>
                 </div>
             </div>
             <nav class="main-nav">

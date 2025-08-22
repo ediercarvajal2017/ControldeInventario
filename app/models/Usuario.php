@@ -17,6 +17,11 @@ use App\Models\Conexion;
 
 class Usuario
 {
+    // Alias para compatibilidad con los tests
+    public static function getById($id)
+    {
+        return self::find($id);
+    }
     public static function all()
     {
         $pdo = Conexion::conectar();

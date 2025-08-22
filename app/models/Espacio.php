@@ -21,7 +21,7 @@ use App\Models\Conexion;
  * @property int $id                ID del espacio
  * @property string $nombre         Nombre del espacio
  * @property string $numeracion     Número o código identificador
- * @property int $institucion_id    ID de la institución asociada
+// * @property int $institucion_id    ID de la institución asociada
  */
 class Espacio {
     public $id;
@@ -36,13 +36,10 @@ class Espacio {
     public static function create($data)
     {
         $pdo = Conexion::conectar();
-        // Si no se pasa institucion_id, usar null
-        $institucion_id = array_key_exists('institucion_id', $data) ? $data['institucion_id'] : null;
-        $stmt = $pdo->prepare("INSERT INTO espacios (nombre, numeracion, institucion_id) VALUES (?, ?, ?)");
+        $stmt = $pdo->prepare("INSERT INTO espacios (nombre, numeracion) VALUES (?, ?)");
         return $stmt->execute([
             $data['nombre'],
-            $data['numeracion'],
-            $institucion_id
+            $data['numeracion']
         ]);
     }
 
@@ -76,12 +73,11 @@ class Espacio {
      */
     public static function update($id, $data) {
         $pdo = Conexion::conectar();
-        $sql = 'UPDATE espacios SET nombre=:nombre, numeracion=:numeracion, institucion_id=:institucion_id WHERE id=:id';
+        $sql = 'UPDATE espacios SET nombre=:nombre, numeracion=:numeracion WHERE id=:id';
         $stmt = $pdo->prepare($sql);
         $params = [
             'nombre' => $data['nombre'],
             'numeracion' => $data['numeracion'],
-            'institucion_id' => $data['institucion_id'],
             'id' => $id
         ];
         return $stmt->execute($params);

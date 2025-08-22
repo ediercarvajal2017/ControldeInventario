@@ -4,6 +4,11 @@ require_once __DIR__ . '/../../app/models/Asignacion.php';
 
 class AsignacionTest extends TestCase
 {
+    public static function setUpBeforeClass(): void
+    {
+        $pdo = \App\Models\Conexion::conectar();
+        $pdo->exec('DELETE FROM asignaciones');
+    }
     private static $idCreado;
 
     public function testObtenerTodasLasAsignaciones()

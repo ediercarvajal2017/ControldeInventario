@@ -4,6 +4,11 @@ require_once __DIR__ . '/../../app/models/Institucion.php';
 
 class InstitucionTest extends TestCase
 {
+    public static function setUpBeforeClass(): void
+    {
+        $pdo = \App\Models\Conexion::conectar();
+        $pdo->exec('DELETE FROM instituciones');
+    }
     private static $idCreado;
 
     public function testCrearInstitucion()

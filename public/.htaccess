@@ -2,3 +2,17 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ index.php [QSA,L]
+
+# Denegar acceso a archivos ocultos y de configuración
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>
+
+# Bloquear acceso a archivos sensibles por extensión
+<FilesMatch "\.(htaccess|env|ini|log|sh|sql|bak)$">
+    Require all denied
+</FilesMatch>
+# (Opcional) Si quieres bloquear acceso directo a todos los .php excepto index.php, usa:
+# <Files ~ "^(?!index\.php$).+\.php$">
+#     Require all denied
+# </Files>

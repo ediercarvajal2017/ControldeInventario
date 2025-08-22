@@ -1,7 +1,58 @@
 <?php
 class MainController {
     public function handleRequest() {
-    // ...
+        // Iniciar sesión si no está iniciada
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        // Rutas de autenticación
+        $uri = $_SERVER['REQUEST_URI'] ?? '/';
+        $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
+        $path = parse_url($uri, PHP_URL_PATH);
+        $base = '/ControldeInventario/public';
+        $route = $path;
+        if (strpos($path, $base) === 0) {
+            $route = substr($path, strlen($base));
+            if ($route === '') { $route = '/'; }
+        }
+        // Si la ruta aún comienza con /public, eliminarlo también
+        if (strpos($route, '/public') === 0) {
+            $route = substr($route, 7); // elimina '/public'
+            if ($route === '') { $route = '/'; }
+        }
+        // Normaliza barras duplicadas al inicio y barras finales: /foo y /foo/ serán iguales
+        $route = preg_replace('#^/+#', '/', $route); // Solo una barra al inicio
+        if ($route !== '/') {
+            $route = rtrim($route, '/');
+        }
+
+        // Rutas públicas: login y logout
+        if ($route === '/login' && $method === 'GET') {
+            require_once __DIR__ . '/AuthController.php';
+            $controller = new \App\Controllers\AuthController();
+            $controller->showLogin();
+            return;
+        }
+        if ($route === '/login' && $method === 'POST') {
+            require_once __DIR__ . '/AuthController.php';
+            $controller = new \App\Controllers\AuthController();
+            $controller->login();
+            return;
+        }
+        if ($route === '/logout' && $method === 'GET') {
+            require_once __DIR__ . '/AuthController.php';
+            $controller = new \App\Controllers\AuthController();
+            $controller->logout();
+            return;
+        }
+
+        // Proteger todas las rutas excepto login/logout
+        $rutasPublicas = ['/login', '/logout'];
+        if (!isset($_SESSION['usuario']) && !in_array($route, $rutasPublicas)) {
+            header('Location: /ControldeInventario/public/login');
+            exit;
+        }
 
         // Normaliza la ruta (sin query string) y quita el prefijo base
         $uri = $_SERVER['REQUEST_URI'] ?? '/';

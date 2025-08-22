@@ -1,4 +1,5 @@
 <?php
+namespace App\Models;
 /**
  * Modelo Institucion
  * 
@@ -9,7 +10,8 @@
  * @date 2025-08-11
  */
 
-namespace App\Models;
+
+require_once __DIR__ . '/Conexion.php';
 
 require_once __DIR__ . '/Conexion.php';
 use App\Models\Conexion;
@@ -52,6 +54,7 @@ class Institucion {
         $stmt = $pdo->prepare('INSERT INTO instituciones (codigo_dane, nombre, direccion, tipo_sede, telefono1, telefono2, celular, email) VALUES (:codigo_dane, :nombre, :direccion, :tipo_sede, :telefono1, :telefono2, :celular, :email)');
         return $stmt->execute($params);
     }
+    // ...existing code...
 
     /**
      * Obtiene todas las instituciones registradas.
@@ -122,23 +125,7 @@ class Institucion {
             $stmt = $pdo->prepare('DELETE FROM instituciones WHERE id = :id');
             return $stmt->execute(['id' => $id]);
         } catch (\PDOException $e) {
-            if ($e->getCode() == '23000') {
-                // Buscar usuarios asociados
-                $stmtUsuarios = $pdo->prepare('SELECT id, nombres, apellidos FROM usuarios WHERE institucion_id = :id');
-                $stmtUsuarios->execute(['id' => $id]);
-                $usuarios = $stmtUsuarios->fetchAll();
-                if ($usuarios) {
-                    $lista = '';
-                    foreach ($usuarios as $u) {
-                        $lista .= "ID: {$u['id']} - {$u['nombres']} {$u['apellidos']}<br>";
-                    }
-                    $errorMsg = 'No se puede eliminar la institución porque tiene usuarios asociados:<br>' . $lista;
-                } else {
-                    $errorMsg = 'No se puede eliminar la institución porque tiene registros asociados.';
-                }
-            } else {
-                $errorMsg = 'Error al eliminar la institución: ' . $e->getMessage();
-            }
+            $errorMsg = 'Error al eliminar la institución: ' . $e->getMessage();
             return false;
         }
     }

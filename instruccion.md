@@ -1,6 +1,6 @@
 # Proyecto: Control de inventario
 Este proyecto es una aplicación web educativa desarrollada con tecnologías del lado del cliente y del servidor. Utiliza HTML, CSS, JavaScript, PHP y MySQL como gestor de base de datos.
-## 🧠 Instrucciones para GitHub Copilot
+##  Instrucciones para GitHub Copilot
 Refactoriza el codigo siempre que se pueda
 Usar buenas practicas
 Usar tecnolodias de Html, Css, JavaScript, PHP, MySQL

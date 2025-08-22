@@ -38,7 +38,7 @@ if (isset($_SESSION['exito'])) {
                 <td><?= htmlspecialchars($usuario['nombres']) ?></td>
                 <td><?= htmlspecialchars($usuario['apellidos']) ?></td>
                 <td><?= htmlspecialchars($usuario['cargo']) ?></td>
-                <td><?= htmlspecialchars($usuario['institucion_id']) ?></td>
+                <!-- Eliminado campo institucion_id -->
                 <td><?= htmlspecialchars($usuario['username']) ?></td>
                 <td><?= htmlspecialchars($usuario['rol']) ?></td>
                 <td><?= $usuario['activo'] ? 'Sí' : 'No' ?></td>

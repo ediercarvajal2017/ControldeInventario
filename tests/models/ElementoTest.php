@@ -4,6 +4,11 @@ require_once __DIR__ . '/../../app/models/Elemento.php';
 
 class ElementoTest extends TestCase
 {
+    public static function setUpBeforeClass(): void
+    {
+        $pdo = \App\Models\Conexion::conectar();
+        $pdo->exec('DELETE FROM elementos');
+    }
     private static $idCreado;
 
     public function testCrearElemento()

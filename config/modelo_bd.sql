@@ -20,12 +20,12 @@ CREATE TABLE usuarios (
     nombres VARCHAR(80) NOT NULL,
     apellidos VARCHAR(80) NOT NULL,
     cargo ENUM('Docente','Rector','Secretario') NOT NULL,
-    institucion_id INT NOT NULL,
+    -- institucion_id INT NOT NULL,
     username VARCHAR(40) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
     rol ENUM('admin','rector','secretario','docente') NOT NULL,
     activo TINYINT(1) DEFAULT 1,
-    FOREIGN KEY (institucion_id) REFERENCES instituciones(id)
+    -- FOREIGN KEY (institucion_id) REFERENCES instituciones(id)
 );
 
 -- Tabla de espacios
@@ -33,8 +33,8 @@ CREATE TABLE espacios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(80) NOT NULL,
     numeracion VARCHAR(20) NOT NULL,
-    institucion_id INT NOT NULL,
-    FOREIGN KEY (institucion_id) REFERENCES instituciones(id)
+    -- institucion_id INT NOT NULL,
+    -- FOREIGN KEY (institucion_id) REFERENCES instituciones(id)
 );
 
 -- Tabla de elementos
