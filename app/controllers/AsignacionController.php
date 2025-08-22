@@ -9,6 +9,7 @@ use App\Models\Espacio;
 
 class AsignacionController {
     public function index() {
+    // ...
         $asignaciones = Asignacion::getAll();
         if (!is_array($asignaciones)) {
             $asignaciones = [];
@@ -44,7 +45,7 @@ class AsignacionController {
 
         if (Asignacion::create($data)) {
             $_SESSION['exito'] = '¡Asignación registrada exitosamente!';
-            header('Location: /ControldeInventario/public/asignaciones');
+            header('Location: /ControldeInventario/asignaciones');
             exit;
         } else {
             $error = 'Ocurrió un error al registrar la asignación.';
@@ -77,7 +78,7 @@ class AsignacionController {
         } else {
             $_SESSION['error'] = 'Ocurrió un error al actualizar la asignación.';
         }
-        header('Location: /ControldeInventario/public/asignaciones');
+    header('Location: /ControldeInventario/asignaciones');
         exit;
     }
 
@@ -88,7 +89,7 @@ class AsignacionController {
         } else {
             $_SESSION['error'] = 'Ocurrió un error al eliminar la asignación.';
         }
-        header('Location: /ControldeInventario/public/asignaciones');
+    header('Location: /ControldeInventario/asignaciones');
         exit;
     }
 }

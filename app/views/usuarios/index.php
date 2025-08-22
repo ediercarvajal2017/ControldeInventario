@@ -8,11 +8,11 @@ if (isset($_SESSION['exito'])) {
     unset($_SESSION['exito']);
 }
 ?>
-<link rel="stylesheet" href="/ControldeInventario/public/assets/css/usuarios-actions.css">
+<link rel="stylesheet" href="/ControldeInventario/assets/css/usuarios-actions.css">
 <h2>Usuarios</h2>
-<a href="/ControldeInventario/public/usuarios/create" class="usuarios-action-btn usuarios-action-create">
+<a href="/ControldeInventario/usuarios/create" class="usuarios-action-btn usuarios-action-create">
     <i class="fa fa-plus-circle"></i>
-    <img src="/ControldeInventario/public/assets/img/add.png" alt="Crear" />
+    <img src="/ControldeInventario/assets/img/add.png" alt="Crear" />
     Nuevo Usuario
 </a>
 <table>
@@ -43,14 +43,14 @@ if (isset($_SESSION['exito'])) {
                 <td><?= htmlspecialchars($usuario['rol']) ?></td>
                 <td><?= $usuario['activo'] ? 'Sí' : 'No' ?></td>
                 <td>
-                    <a href="/ControldeInventario/public/usuarios/edit?id=<?= $usuario['id'] ?>" class="usuarios-action-btn usuarios-action-edit">
+                    <a href="/ControldeInventario/usuarios/edit?id=<?= $usuario['id'] ?>" class="usuarios-action-btn usuarios-action-edit">
                         <i class="fa fa-pen-to-square"></i>
-                        <img src="/ControldeInventario/public/assets/img/edit.png" alt="Editar" />
+                        <img src="/ControldeInventario/assets/img/edit.png" alt="Editar" />
                         Editar
                     </a>
-                    <a href="/ControldeInventario/public/usuarios/delete?id=<?= $usuario['id'] ?>" class="usuarios-action-btn usuarios-action-delete" onclick="return confirm('¿Eliminar usuario?')">
+                    <a href="/ControldeInventario/usuarios/delete?id=<?= $usuario['id'] ?>" class="usuarios-action-btn usuarios-action-delete" onclick="return confirm('¿Eliminar usuario?')">
                         <i class="fa fa-trash"></i>
-                        <img src="/ControldeInventario/public/assets/img/delete.png" alt="Eliminar" />
+                        <img src="/ControldeInventario/assets/img/delete.png" alt="Eliminar" />
                         Eliminar
                     </a>
                 </td>

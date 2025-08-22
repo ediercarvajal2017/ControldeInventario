@@ -20,7 +20,7 @@
 
     <h2 class="titulo-elementos">Agregar Elemento</h2>
 
-    <form action="/ControldeInventario/public/elementos/store" method="post" enctype="multipart/form-data" class="form-elemento form-asignacion">
+    <form action="/ControldeInventario/elementos/store" method="post" enctype="multipart/form-data" class="form-elemento form-asignacion">
         <label for="codigo">Código:</label>
         <input type="text" name="codigo" id="codigo" required value="<?= isset($_POST['codigo']) ? htmlspecialchars($_POST['codigo']) : '' ?>">
 

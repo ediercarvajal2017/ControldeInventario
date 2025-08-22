@@ -1,6 +1,7 @@
 
 <?php
     // Vista: Listado de asignaciones
+    // ...
     ob_start();
     if (session_status() === PHP_SESSION_NONE) {
         session_start();
@@ -13,11 +14,12 @@
         echo '<div class="mensaje-error">' . $_SESSION['error'] . '</div>';
         unset($_SESSION['error']);
     }
+    // ...
 ?>
     <h2 class="titulo-asignaciones">Asignaciones de Elementos</h2>
-    <a href="/ControldeInventario/public/asignaciones/create" class="action-btn action-create">
+    <a href="/ControldeInventario/asignaciones/create" class="action-btn action-create">
         <i class="fa fa-plus-circle"></i>
-        <img src="/ControldeInventario/public/assets/img/add.png" alt="Crear" />
+    <img src="/ControldeInventario/assets/img/add.png" alt="Crear" />
         Nueva Asignación
     </a>
     <table class="tabla-asignaciones tabla-asignaciones-separada">
@@ -43,14 +45,14 @@
                         <td><?= htmlspecialchars($as['estado']) ?></td>
                         <td><?= htmlspecialchars($as['ubicacion']) ?></td>
                         <td>
-                            <a href="/ControldeInventario/public/asignaciones/edit?id=<?= $as['id'] ?>" class="action-btn action-edit">
+                            <a href="/ControldeInventario/asignaciones/edit?id=<?= $as['id'] ?>" class="action-btn action-edit">
                                 <i class="fa fa-pen-to-square"></i>
-                                <img src="/ControldeInventario/public/assets/img/edit.png" alt="Editar" />
+                                <img src="/ControldeInventario/assets/img/edit.png" alt="Editar" />
                                 Editar
                             </a>
-                            <a href="/ControldeInventario/public/asignaciones/delete?id=<?= $as['id'] ?>" class="action-btn action-delete">
+                            <a href="/ControldeInventario/asignaciones/delete?id=<?= $as['id'] ?>" class="action-btn action-delete">
                                 <i class="fa fa-trash"></i>
-                                <img src="/ControldeInventario/public/assets/img/delete.png" alt="Eliminar" />
+                                <img src="/ControldeInventario/assets/img/delete.png" alt="Eliminar" />
                                 Eliminar
                             </a>
                         </td>

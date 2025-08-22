@@ -1,6 +1,7 @@
 <!-- Enlace a estilos específicos del formulario de elementos y asignaciones -->
-<link rel="stylesheet" href="/ControldeInventario/public/assets/css/form-elementos.css">
 <link rel="stylesheet" href="/ControldeInventario/public/assets/css/form-asignaciones.css">
+<link rel="stylesheet" href="/ControldeInventario/assets/css/form-elementos.css">
+<link rel="stylesheet" href="/ControldeInventario/assets/css/form-asignaciones.css">
 <script>
     // Ocultar mensaje de éxito/error después de 3.5 segundos
     setTimeout(function() {
@@ -34,7 +35,7 @@
     <?php endif; ?>
 
     <h2 class="titulo-elementos">Editar Elemento</h2>
-    <form action="/ControldeInventario/public/elementos/update?id=<?= $elemento['id'] ?>" method="post" enctype="multipart/form-data" class="form-elemento form-asignacion">
+    <form action="/ControldeInventario/elementos/update?id=<?= $elemento['id'] ?>" method="post" enctype="multipart/form-data" class="form-elemento form-asignacion">
         <label for="codigo">Código:</label>
         <input type="text" name="codigo" id="codigo" value="<?= htmlspecialchars($elemento['codigo']) ?>" required>
 
@@ -43,9 +44,9 @@
 
         <label for="foto">Foto actual:</label>
         <?php
-        $foto_path = $_SERVER['DOCUMENT_ROOT'] . '/ControldeInventario/public/uploads/' . basename($elemento['foto']);
+        $foto_path = $_SERVER['DOCUMENT_ROOT'] . '/ControldeInventario/uploads/' . basename($elemento['foto']);
         if (!empty($elemento['foto']) && file_exists($foto_path)) {
-            echo '<img src="/ControldeInventario/public/uploads/' . htmlspecialchars(basename($elemento['foto'])) . '" alt="Foto" width="60" style="border-radius:6px;border:1px solid #b2dfdb;background:#fafafa;">';
+            echo '<img src="/ControldeInventario/uploads/' . htmlspecialchars(basename($elemento['foto'])) . '" alt="Foto" width="60" style="border-radius:6px;border:1px solid #b2dfdb;background:#fafafa;">';
         } else {
             echo '<span style="display:inline-flex;align-items:center;gap:6px;color:#bdbdbd;font-size:1em;background:#f5f5f5;border:1px solid #e0e0e0;padding:7px 12px;border-radius:6px;">
                 <i class="fa fa-image" style="font-size:1.5em;"></i> Sin foto disponible
@@ -60,7 +61,7 @@
         <input type="number" name="valor" id="valor" value="<?= htmlspecialchars($elemento['valor']) ?>" required min="0">
 
     <label for="factura">Factura actual:</label>
-    <a href="/ControldeInventario/public/<?= htmlspecialchars($elemento['factura']) ?>" target="_blank" class="btn-ver-factura" style="display:inline-flex;align-items:center;gap:7px;padding:7px 16px;background:#e0f2f1;color:#00695c;font-weight:600;border-radius:6px;text-decoration:none;border:1px solid #b2dfdb;transition:background .2s,border .2s;box-shadow:0 1px 4px #0001;">
+    <a href="/ControldeInventario/<?= htmlspecialchars($elemento['factura']) ?>" target="_blank" class="btn-ver-factura" style="display:inline-flex;align-items:center;gap:7px;padding:7px 16px;background:#e0f2f1;color:#00695c;font-weight:600;border-radius:6px;text-decoration:none;border:1px solid #b2dfdb;transition:background .2s,border .2s;box-shadow:0 1px 4px #0001;">
         <i class="fa fa-file-invoice" style="font-size:1.1em;"></i> Ver factura
     </a>
 

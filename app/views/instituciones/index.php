@@ -2,11 +2,11 @@
 <?php
 // Vista: Listado de instituciones
 ob_start(); ?>
-<link rel="stylesheet" href="/ControldeInventario/public/assets/css/instituciones-actions.css">
+<link rel="stylesheet" href="/ControldeInventario/assets/css/instituciones-actions.css">
 <h2>Instituciones Educativas</h2>
-<a href="/ControldeInventario/public/instituciones/create" class="instituciones-action-btn instituciones-action-create">
+<a href="/ControldeInventario/instituciones/create" class="instituciones-action-btn instituciones-action-create">
     <i class="fa fa-plus-circle"></i>
-    <img src="/ControldeInventario/public/assets/img/add.png" alt="Crear" />
+    <img src="/ControldeInventario/assets/img/add.png" alt="Crear" />
     Registrar Institución
 </a>
 <?php if (!empty($error)): ?>
@@ -31,14 +31,14 @@ ob_start(); ?>
                 <td><?= htmlspecialchars($inst['direccion']) ?></td>
                 <td><?= htmlspecialchars($inst['tipo_sede']) ?></td>
                 <td>
-                    <a href="/ControldeInventario/public/instituciones/edit?id=<?= $inst['id'] ?>" class="instituciones-action-btn instituciones-action-edit">
+                    <a href="/ControldeInventario/instituciones/edit?id=<?= $inst['id'] ?>" class="instituciones-action-btn instituciones-action-edit">
                         <i class="fa fa-pen-to-square"></i>
-                        <img src="/ControldeInventario/public/assets/img/edit.png" alt="Editar" />
+                        <img src="/ControldeInventario/assets/img/edit.png" alt="Editar" />
                         Editar
                     </a>
-                    <a href="/ControldeInventario/public/instituciones/delete?id=<?= $inst['id'] ?>" class="instituciones-action-btn instituciones-action-delete" onclick="return confirm('¿Eliminar institución?')">
+                    <a href="/ControldeInventario/instituciones/delete?id=<?= $inst['id'] ?>" class="instituciones-action-btn instituciones-action-delete" onclick="return confirm('¿Eliminar institución?')">
                         <i class="fa fa-trash"></i>
-                        <img src="/ControldeInventario/public/assets/img/delete.png" alt="Eliminar" />
+                        <img src="/ControldeInventario/assets/img/delete.png" alt="Eliminar" />
                         Eliminar
                     </a>
                 </td>

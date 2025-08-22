@@ -1,43 +1,47 @@
 <?php
 class MainController {
-    public function handleRequest() {
+    public function handleRequest($route = null) {
         // Iniciar sesión si no está iniciada
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
-
-        // Rutas de autenticación
-        $uri = $_SERVER['REQUEST_URI'] ?? '/';
         $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
-        $path = parse_url($uri, PHP_URL_PATH);
-    $base = '';
-        $route = $path;
-        if ($base && strpos($path, $base) === 0) {
-            $route = substr($path, strlen($base));
-            if ($route === '') { $route = '/'; }
-        } else {
-            $route = $path;
-        }
-        // Normaliza barras duplicadas al inicio y barras finales: /foo y /foo/ serán iguales
-        $route = preg_replace('#^/+#', '/', $route); // Solo una barra al inicio
-        if ($route !== '/') {
-            $route = rtrim($route, '/');
+        // Usar la ruta pasada como parámetro, o calcularla si no se pasa
+        if ($route === null) {
+            $uri = $_SERVER['REQUEST_URI'] ?? '/';
+            $base = '';
+            if (isset($_GET['url']) && $_GET['url'] !== '') {
+                $route = '/' . ltrim($_GET['url'], '/');
+            } else {
+                $path = parse_url($uri, PHP_URL_PATH);
+                $route = $path;
+                if ($base && strpos($path, $base) === 0) {
+                    $route = substr($path, strlen($base));
+                    if ($route === '') { $route = '/'; }
+                } else {
+                    $route = $path;
+                }
+            }
+            $route = preg_replace('#^/+#', '/', $route);
+            if ($route !== '/') {
+                $route = rtrim($route, '/');
+            }
         }
 
         // Rutas públicas: login y logout
-        if ($route === '/login' && $method === 'GET') {
+    if ($route === '/ControldeInventario/login' && $method === 'GET') {
             require_once __DIR__ . '/AuthController.php';
             $controller = new \App\Controllers\AuthController();
             $controller->showLogin();
             return;
         }
-        if ($route === '/login' && $method === 'POST') {
+    if ($route === '/ControldeInventario/login' && $method === 'POST') {
             require_once __DIR__ . '/AuthController.php';
             $controller = new \App\Controllers\AuthController();
             $controller->login();
             return;
         }
-        if ($route === '/logout' && $method === 'GET') {
+    if ($route === '/ControldeInventario/logout' && $method === 'GET') {
             require_once __DIR__ . '/AuthController.php';
             $controller = new \App\Controllers\AuthController();
             $controller->logout();
@@ -45,32 +49,13 @@ class MainController {
         }
 
         // Proteger todas las rutas excepto login/logout
-        $rutasPublicas = ['/login', '/logout'];
+    $rutasPublicas = ['/ControldeInventario/login', '/ControldeInventario/logout'];
         if (!isset($_SESSION['usuario']) && !in_array($route, $rutasPublicas)) {
-            header('Location: /login');
+            header('Location: /ControldeInventario/login');
             exit;
         }
 
-        // Normaliza la ruta (sin query string) y quita el prefijo base
-        $uri = $_SERVER['REQUEST_URI'] ?? '/';
-        $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
-        $path = parse_url($uri, PHP_URL_PATH);
-        $base = '/ControldeInventario/public';
-        $route = $path;
-        if (strpos($path, $base) === 0) {
-            $route = substr($path, strlen($base));
-            if ($route === '') { $route = '/'; }
-        }
-        // Si la ruta aún comienza con /public, eliminarlo también
-        if (strpos($route, '/public') === 0) {
-            $route = substr($route, 7); // elimina '/public'
-            if ($route === '') { $route = '/'; }
-        }
-        // Normaliza barras duplicadas al inicio y barras finales: /foo y /foo/ serán iguales
-        $route = preg_replace('#^/+#', '/', $route); // Solo una barra al inicio
-        if ($route !== '/') {
-            $route = rtrim($route, '/');
-        }
+    // --- Eliminada la segunda normalización de rutas, ya no es necesaria ---
     // ...
 
         // Instituciones

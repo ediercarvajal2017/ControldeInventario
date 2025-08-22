@@ -12,7 +12,7 @@
         }
 ?>
     <h2 class="titulo-asignaciones">Editar Asignación</h2>
-    <form action="/ControldeInventario/public/asignaciones/update?id=<?= $asignacion['id'] ?>" method="post" class="formulario form-asignacion">
+    <form action="/ControldeInventario/asignaciones/update?id=<?= $asignacion['id'] ?>" method="post" class="formulario form-asignacion">
         <label for="fecha_asignacion"><strong>Fecha de asignación</strong></label>
         <input type="text" name="fecha_asignacion" id="fecha_asignacion" value="<?= htmlspecialchars($asignacion['fecha_asignacion']) ?>" required placeholder="Ingrese la fecha de asignación">
 

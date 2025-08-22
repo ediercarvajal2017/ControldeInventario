@@ -1,9 +1,9 @@
 <?php
 // Vista: Listado de espacios
 ob_start(); ?>
-<link rel="stylesheet" href="/ControldeInventario/public/assets/css/form-espacios.css">
+<link rel="stylesheet" href="/ControldeInventario/assets/css/form-espacios.css">
 <h2 class="titulo-elementos">Consulta de Espacios</h2>
-<a href="/ControldeInventario/public/espacios/create" class="btn-ver-factura" style="margin-bottom:1.5em;">
+<a href="/ControldeInventario/espacios/create" class="btn-ver-factura" style="margin-bottom:1.5em;">
     <i class="fa fa-plus-circle"></i> Registrar Espacio
 </a>
 <table class="tabla-elementos">
@@ -21,10 +21,10 @@ ob_start(); ?>
                 <td><?= htmlspecialchars($esp['nombre']) ?></td>
                 <td><?= htmlspecialchars($esp['numeracion']) ?></td>
                 <td>
-                    <a href="/ControldeInventario/public/espacios/edit?id=<?= $esp['id'] ?>" class="btn-ver-factura" title="Editar">
+                    <a href="/ControldeInventario/espacios/edit?id=<?= $esp['id'] ?>" class="btn-ver-factura" title="Editar">
                         <i class="fa fa-pen-to-square"></i> Editar
                     </a>
-                    <a href="/ControldeInventario/public/espacios/delete?id=<?= $esp['id'] ?>" class="btn-ver-factura" style="background:#fff0f3;color:#d32f2f;border-color:#f7b2b2;" title="Eliminar" onclick="return confirm('¿Eliminar espacio?')">
+                    <a href="/ControldeInventario/espacios/delete?id=<?= $esp['id'] ?>" class="btn-ver-factura" style="background:#fff0f3;color:#d32f2f;border-color:#f7b2b2;" title="Eliminar" onclick="return confirm('¿Eliminar espacio?')">
                         <i class="fa fa-trash"></i> Eliminar
                     </a>
                 </td>

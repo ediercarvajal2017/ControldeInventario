@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Iniciar sesión</title>
-    <link rel="stylesheet" href="/ControldeInventario/public/assets/css/style.css">
+    <link rel="stylesheet" href="/ControldeInventario/assets/css/style.css">
     <style>
         body { background: #f4f4f4; font-family: Arial, sans-serif; }
         .login-container { max-width: 400px; margin: 60px auto; background: #fff; padding: 2em; border-radius: 8px; box-shadow: 0 2px 8px #ccc; }
@@ -22,7 +22,7 @@
         <?php if (!empty($error)): ?>
             <div class="error"><?= htmlspecialchars($error) ?></div>
         <?php endif; ?>
-        <form method="post" action="/ControldeInventario/public/login">
+    <form method="post" action="/ControldeInventario/login">
             <div class="form-group">
                 <label for="username">Usuario</label>
                 <input type="text" id="username" name="username" required autofocus>

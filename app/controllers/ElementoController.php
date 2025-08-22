@@ -115,7 +115,7 @@ class ElementoController {
             ];
 
             if (\App\Models\Elemento::create($data)) {
-                header('Location: /ControldeInventario/public/elementos/create?exito=1');
+                header('Location: /ControldeInventario/elementos/create?exito=1');
                 exit;
             } else {
                 $error = "Ocurrió un error al registrar el elemento en la base de datos.";
@@ -193,7 +193,7 @@ class ElementoController {
             'usuario_registro_id' => $usuario_registro_id
         ];
         if (Elemento::update($id, $dataUpdate)) {
-            header('Location: /ControldeInventario/public/elementos/edit?id=' . $id . '&exito=1');
+            header('Location: /ControldeInventario/elementos/edit?id=' . $id . '&exito=1');
             exit;
         } else {
             $error = "Ocurrió un error al actualizar el elemento.";
@@ -202,8 +202,8 @@ class ElementoController {
     }
 
     public function delete($id) {
-        Elemento::delete($id); // Eliminar el elemento
-        header('Location: /ControldeInventario/public/elementos'); // Redirigir al listado
-        exit;
+    Elemento::delete($id); // Eliminar el elemento
+    header('Location: /ControldeInventario/elementos'); // Redirigir al listado
+    exit;
     }
 }

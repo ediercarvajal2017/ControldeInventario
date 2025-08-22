@@ -7,7 +7,7 @@ ob_start(); ?>
     </div>
 <?php endif; ?>
 <h2 class="titulo-asignaciones">Nueva Asignación</h2>
-<form action="/ControldeInventario/public/asignaciones/store" method="post" class="formulario form-asignacion">
+<form action="/ControldeInventario/asignaciones/store" method="post" class="formulario form-asignacion">
 
     <label for="elemento_id"><strong>Elemento</strong></label>
     <select name="elemento_id" id="elemento_id" required>
