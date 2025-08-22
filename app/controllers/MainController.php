@@ -10,16 +10,13 @@ class MainController {
         $uri = $_SERVER['REQUEST_URI'] ?? '/';
         $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
         $path = parse_url($uri, PHP_URL_PATH);
-        $base = '/ControldeInventario/public';
+    $base = '';
         $route = $path;
-        if (strpos($path, $base) === 0) {
+        if ($base && strpos($path, $base) === 0) {
             $route = substr($path, strlen($base));
             if ($route === '') { $route = '/'; }
-        }
-        // Si la ruta aún comienza con /public, eliminarlo también
-        if (strpos($route, '/public') === 0) {
-            $route = substr($route, 7); // elimina '/public'
-            if ($route === '') { $route = '/'; }
+        } else {
+            $route = $path;
         }
         // Normaliza barras duplicadas al inicio y barras finales: /foo y /foo/ serán iguales
         $route = preg_replace('#^/+#', '/', $route); // Solo una barra al inicio
@@ -50,7 +47,7 @@ class MainController {
         // Proteger todas las rutas excepto login/logout
         $rutasPublicas = ['/login', '/logout'];
         if (!isset($_SESSION['usuario']) && !in_array($route, $rutasPublicas)) {
-            header('Location: /ControldeInventario/public/login');
+            header('Location: /login');
             exit;
         }
 
