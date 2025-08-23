@@ -9,17 +9,9 @@ require_once __DIR__ . '/config/config.php';
 require_once __DIR__ . '/app/controllers/MainController.php';
 session_start();
 
-// Normalizar la ruta eliminando el prefijo /ControldeInventario
-$base = '/ControldeInventario';
-$requestUri = $_SERVER['REQUEST_URI'] ?? '/';
-if (strpos($requestUri, $base) === 0) {
-	$route = substr($requestUri, strlen($base));
-	if ($route === '' || $route === false) {
-		$route = '/';
-	}
-} else {
-	$route = $requestUri;
-}
+
+// Obtener la ruta solicitada directamente (para despliegue en la raíz)
+$route = $_SERVER['REQUEST_URI'] ?? '/';
 // Eliminar parámetros GET de la ruta
 if (($q = strpos($route, '?')) !== false) {
 	$route = substr($route, 0, $q);
