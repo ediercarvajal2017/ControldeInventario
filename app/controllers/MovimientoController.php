@@ -45,7 +45,7 @@ class MovimientoController
         if (\App\Models\Movimiento::create($data)) {
             session_start();
             $_SESSION['exito'] = '¡Movimiento registrado!';
-            header('Location: /ControldeInventario/public/movimientos');
+            header('Location: ' . BASE_URL . 'movimientos');
             exit;
         } else {
             $error = "No se pudo guardar el movimiento.";
@@ -81,7 +81,7 @@ class MovimientoController
         if (\App\Models\Movimiento::update($id, $data)) {
             session_start();
             $_SESSION['exito'] = '¡Movimiento actualizado!';
-            header('Location: /ControldeInventario/public/movimientos');
+            header('Location: ' . BASE_URL . 'movimientos');
             exit;
         } else {
             $error = "No se pudo actualizar.";
@@ -100,7 +100,7 @@ class MovimientoController
         \App\Models\Movimiento::delete($id);
         session_start();
         $_SESSION['exito'] = '¡Movimiento eliminado!';
-        header('Location: /ControldeInventario/public/movimientos');
+    header('Location: ' . BASE_URL . 'movimientos');
         exit;
     }
 }

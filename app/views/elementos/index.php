@@ -15,9 +15,9 @@ if (isset($_SESSION['error'])) {
     // Vista: Listado de elementos
     ob_start();
 ?>
-    <link rel="stylesheet" href="/ControldeInventario/assets/css/elementos-actions.css">
+    <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/form-elementos.css">
     <h2 class="titulo-elementos">Inventario de Elementos</h2>
-    <a href="/ControldeInventario/elementos/create" class="elementos-action-btn elementos-action-create">
+    <a href="<?= BASE_URL ?>elementos/create" class="elementos-action-btn elementos-action-create">
         <i class="fa fa-plus-circle"></i>
         Agregar Elemento
     </a>
@@ -41,9 +41,9 @@ if (isset($_SESSION['error'])) {
                         <td><?= htmlspecialchars($el['descripcion']) ?></td>
                         <td>
                             <?php
-                            $foto_path = $_SERVER['DOCUMENT_ROOT'] . '/ControldeInventario/uploads/' . basename($el['foto']);
+                            $foto_path = $_SERVER['DOCUMENT_ROOT'] . BASE_URL . 'uploads/' . basename($el['foto']);
                             if (!empty($el['foto']) && file_exists($foto_path)) {
-                                echo '<img src="/ControldeInventario/uploads/' . htmlspecialchars(basename($el['foto'])) . '" alt="Foto" width="60" height="60" class="miniatura-foto" style="object-fit:cover;object-position:center;border-radius:6px;border:1px solid #b2dfdb;background:#fafafa;cursor:pointer;aspect-ratio:1/1;">';
+                                echo '<img src="' . BASE_URL . 'uploads/' . htmlspecialchars(basename($el['foto'])) . '" alt="Foto" width="60" height="60" class="miniatura-foto" style="object-fit:cover;object-position:center;border-radius:6px;border:1px solid #b2dfdb;background:#fafafa;cursor:pointer;aspect-ratio:1/1;">';
                             } else {
                                 echo '<span style="display:inline-flex;align-items:center;gap:6px;color:#bdbdbd;font-size:1em;background:#f5f5f5;border:1px solid #e0e0e0;padding:7px 12px;border-radius:6px;">
                                     <i class="fa fa-image" style="font-size:1.5em;"></i> Sin foto
@@ -53,17 +53,17 @@ if (isset($_SESSION['error'])) {
                         </td>
                         <td>$<?= number_format($el['valor'], 2) ?></td>
                         <td>
-                            <a href="/ControldeInventario/<?= htmlspecialchars($el['factura']) ?>" target="_blank" class="btn-ver-factura">
+                            <a href="<?= BASE_URL . htmlspecialchars($el['factura']) ?>" target="_blank" class="btn-ver-factura-elementos">
                                 <i class="fa fa-file-invoice"></i> Ver factura
                             </a>
                         </td>
                         <td><?= htmlspecialchars($el['fecha_ingreso']) ?></td>
                         <td>
-                            <a href="/ControldeInventario/elementos/edit?id=<?= $el['id'] ?>" class="elementos-action-btn elementos-action-edit">
+                            <a href="<?= BASE_URL ?>elementos/edit?id=<?= $el['id'] ?>" class="elementos-action-btn elementos-action-edit">
                                 <i class="fa fa-pen-to-square"></i>
                                 Editar
                             </a>
-                            <a href="/ControldeInventario/elementos/delete?id=<?= $el['id'] ?>" class="elementos-action-btn elementos-action-delete">
+                            <a href="<?= BASE_URL ?>elementos/delete?id=<?= $el['id'] ?>" class="elementos-action-btn elementos-action-delete">
                                 <i class="fa fa-trash"></i>
                                 Eliminar
                             </a>
@@ -101,5 +101,5 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 });
 </script>
-<script src="/ControldeInventario/assets/js/elementos.js"></script>
+<script src="<?= BASE_URL ?>assets/js/elementos.js"></script>
 <?php $content = ob_get_clean(); include __DIR__ . '/../layout.php'; ?>

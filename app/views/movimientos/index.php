@@ -2,19 +2,16 @@
     // Vista: Listado de movimientos
     ob_start();
     if (isset($_SESSION['exito'])) {
-        echo '<div class="alert alert-success">'.htmlspecialchars($_SESSION['exito']).'</div>';
+            echo '<div class="mensaje-movimiento-exito">'.htmlspecialchars($_SESSION['exito']).'</div>';
         unset($_SESSION['exito']);
     }
     if (!isset($movimientos)) $movimientos = [];
 ?>
-    <link rel="stylesheet" href="/ControldeInventario/assets/css/movimientos-actions.css">
-    <h2>Movimientos</h2>
-    <a href="/ControldeInventario/movimientos/create" class="movimientos-action-btn movimientos-action-create">
-        <i class="fa fa-plus-circle"></i>
-    <img src="/ControldeInventario/assets/img/add.png" alt="Crear" />
-        Nuevo Movimiento
+    <h2 class="titulo-movimientos">Movimientos</h2>
+        <a href="<?= rtrim(BASE_URL, '/') ?>/movimientos/create" class="btn-movimiento movimientos-action-create" style="margin-bottom:1.2em;display:inline-block;">
+        <i class="fa fa-plus-circle"></i> Nuevo Movimiento
     </a>
-    <table class="tabla">
+        <table class="tabla-movimientos tabla-movimientos-separada">
         <thead>
             <tr>
                 <th>ID</th>
@@ -40,15 +37,11 @@
                 <td><?= htmlspecialchars($m['usuario_movimiento_id']) ?></td>
                 <td><?= htmlspecialchars($m['destino']) ?></td>
                 <td>
-                    <a href="/ControldeInventario/movimientos/edit?id=<?= $m['id'] ?>" class="movimientos-action-btn movimientos-action-edit">
-                        <i class="fa fa-pen-to-square"></i>
-                        <img src="/ControldeInventario/assets/img/edit.png" alt="Editar" />
-                        Editar
+                    <a href="<?= rtrim(BASE_URL, '/') ?>/movimientos/edit?id=<?= $m['id'] ?>" class="btn-movimiento movimientos-action-edit" title="Editar">
+                        <i class="fa fa-pen-to-square"></i> Editar
                     </a>
-                    <a href="/ControldeInventario/movimientos/delete?id=<?= $m['id'] ?>" class="movimientos-action-btn movimientos-action-delete" onclick="return confirm('¿Eliminar?')">
-                        <i class="fa fa-trash"></i>
-                        <img src="/ControldeInventario/assets/img/delete.png" alt="Eliminar" />
-                        Eliminar
+                    <a href="<?= rtrim(BASE_URL, '/') ?>/movimientos/delete?id=<?= $m['id'] ?>" class="btn-movimiento movimientos-action-delete" onclick="return confirm('¿Eliminar?')" title="Eliminar">
+                        <i class="fa fa-trash"></i> Eliminar
                     </a>
                 </td>
             </tr>
@@ -56,3 +49,5 @@
         </tbody>
     </table>
 <?php $content = ob_get_clean(); include __DIR__ . '/../layout.php'; ?>
+
+

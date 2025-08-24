@@ -2,11 +2,11 @@
     // Vista: Editar movimiento
     ob_start();
 ?>
-    <h2>Editar Movimiento</h2>
+    <h2 class="titulo-movimientos">Editar Movimiento</h2>
     <?php if (!empty($error)): ?>
-        <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
+            <div class="mensaje-movimiento-error"><?= htmlspecialchars($error) ?></div>
     <?php endif; ?>
-    <form action="/ControldeInventario/public/movimientos/update" method="post" class="formulario">
+        <form action="<?= rtrim(BASE_URL, '/') ?>/movimientos/update" method="post" class="form-movimientos">
         <input type="hidden" name="id" value="<?= htmlspecialchars($movimiento['id']) ?>">
         <label for="elemento_id">Elemento:</label>
         <input type="number" name="elemento_id" id="elemento_id" value="<?= htmlspecialchars($movimiento['elemento_id']) ?>" required>
@@ -31,7 +31,7 @@
         <input type="number" name="usuario_movimiento_id" id="usuario_movimiento_id" value="<?= htmlspecialchars($movimiento['usuario_movimiento_id']) ?>" required>
         <label for="destino">Destino:</label>
         <input type="text" name="destino" id="destino" value="<?= htmlspecialchars($movimiento['destino']) ?>">
-        <button type="submit" class="btn">Actualizar</button>
+        <button type="submit" class="btn-movimiento movimientos-action-edit">Actualizar</button>
     </form>
 <?php
     $content = ob_get_clean();

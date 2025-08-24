@@ -1,0 +1,44 @@
+# Ignorar archivos de entorno y configuración sensibles
+.env
+.env.*
+
+# Ignorar dependencias de Composer
+/vendor/
+
+# Ignorar archivos de caché y logs
+/cache/
+*.log
+
+# Ignorar archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Ignorar archivos de pruebas y resultados temporales
+/phpunit.xml
+/phpunit.result.cache
+
+# Ignorar archivos de configuración de IDE
+/.vscode/
+.idea/
+# Ignorar dependencias de Composer
+/vendor/
+
+# Ignorar archivos de configuración locales
+/.env
+.env.*
+
+# Ignorar archivos de caché y logs
+/cache/
+*.log
+
+# Ignorar archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Ignorar archivos de pruebas y resultados temporales
+/phpunit.xml
+/phpunit.result.cache
+
+# Ignorar archivos de configuración de IDE
+/.vscode/
+.idea/

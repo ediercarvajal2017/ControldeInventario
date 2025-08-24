@@ -25,7 +25,8 @@ class AuthController {
                         'rol' => $user['rol'],
                         'nombres' => $user['nombres'] ?? ''
                     ];
-                    header('Location: /ControldeInventario/');
+                    require_once __DIR__ . '/../../config/config.php';
+                    header('Location: ' . BASE_URL);
                     exit;
                 } else {
                     $error = 'Credenciales incorrectas.';
@@ -36,9 +37,10 @@ class AuthController {
     }
 
     public function logout() {
-    if (session_status() === PHP_SESSION_NONE) session_start();
-    session_destroy();
-    header('Location: /ControldeInventario/login');
-    exit;
+        if (session_status() === PHP_SESSION_NONE) session_start();
+        session_destroy();
+        require_once __DIR__ . '/../../config/config.php';
+        header('Location: ' . BASE_URL . 'login');
+        exit;
     }
 }

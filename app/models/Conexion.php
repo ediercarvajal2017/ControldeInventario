@@ -26,7 +26,7 @@ class Conexion {
         try {
             return new \PDO($dsn, $user, $pass, $options);
         } catch (\PDOException $e) {
-            throw new \PDOException($e->getMessage(), (int)$e->getCode());
+            die('Error de conexión a la base de datos: ' . $e->getMessage());
         }
     }
 }

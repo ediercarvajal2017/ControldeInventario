@@ -9,7 +9,6 @@ use App\Models\Espacio;
 
 class AsignacionController {
     public function index() {
-    // ...
         $asignaciones = Asignacion::getAll();
         if (!is_array($asignaciones)) {
             $asignaciones = [];
@@ -24,6 +23,7 @@ class AsignacionController {
     }
 
     public function store() {
+        require_once __DIR__ . '/../../config/config.php';
         session_start();
         $elemento_id = $_POST['elemento_id'] ?? null;
         $espacio_id = $_POST['espacio_id'] ?? null;
@@ -45,7 +45,7 @@ class AsignacionController {
 
         if (Asignacion::create($data)) {
             $_SESSION['exito'] = '¡Asignación registrada exitosamente!';
-            header('Location: /ControldeInventario/asignaciones');
+            header('Location: ' . BASE_URL . 'asignaciones');
             exit;
         } else {
             $error = 'Ocurrió un error al registrar la asignación.';
@@ -63,6 +63,7 @@ class AsignacionController {
     }
 
     public function update($id) {
+        require_once __DIR__ . '/../../config/config.php';
         session_start();
         $data = [
             'elemento_id' => $_POST['elemento_id'] ?? null,
@@ -78,18 +79,19 @@ class AsignacionController {
         } else {
             $_SESSION['error'] = 'Ocurrió un error al actualizar la asignación.';
         }
-    header('Location: /ControldeInventario/asignaciones');
+        header('Location: ' . BASE_URL . 'asignaciones');
         exit;
     }
 
     public function delete($id) {
+        require_once __DIR__ . '/../../config/config.php';
         session_start();
         if (Asignacion::delete($id)) {
             $_SESSION['exito'] = '¡Asignación eliminada exitosamente!';
         } else {
             $_SESSION['error'] = 'Ocurrió un error al eliminar la asignación.';
         }
-    header('Location: /ControldeInventario/asignaciones');
+        header('Location: ' . BASE_URL . 'asignaciones');
         exit;
     }
 }

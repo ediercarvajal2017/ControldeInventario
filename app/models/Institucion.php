@@ -39,20 +39,36 @@ class Institucion {
      * @param array $data Datos de la institución (codigo_dane, nombre, direccion, tipo_sede)
      * @return bool True si la inserción fue exitosa, False en caso contrario
      */
+    /**
+     * Crea una nueva institución en la base de datos con validación y manejo de errores.
+     * @param array $data
+     * @return bool|string True si éxito, mensaje de error si falla
+     */
     public static function create($data) {
         $pdo = Conexion::conectar();
+        // Validación básica
+        if (empty($data['codigo_dane']) || empty($data['nombre']) || empty($data['direccion']) || empty($data['tipo_sede'])) {
+            return 'Todos los campos obligatorios deben estar completos.';
+        }
+        if (!empty($data['email']) && !filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+            return 'El correo electrónico no es válido.';
+        }
         $params = [
-            'codigo_dane' => $data['codigo_dane'] ?? '',
-            'nombre' => $data['nombre'] ?? '',
-            'direccion' => $data['direccion'] ?? '',
-            'tipo_sede' => $data['tipo_sede'] ?? '',
+            'codigo_dane' => htmlspecialchars(trim($data['codigo_dane'])),
+            'nombre' => htmlspecialchars(trim($data['nombre'])),
+            'direccion' => htmlspecialchars(trim($data['direccion'])),
+            'tipo_sede' => htmlspecialchars(trim($data['tipo_sede'])),
             'telefono1' => $data['telefono1'] ?? null,
             'telefono2' => $data['telefono2'] ?? null,
             'celular' => $data['celular'] ?? null,
             'email' => $data['email'] ?? null
         ];
-        $stmt = $pdo->prepare('INSERT INTO instituciones (codigo_dane, nombre, direccion, tipo_sede, telefono1, telefono2, celular, email) VALUES (:codigo_dane, :nombre, :direccion, :tipo_sede, :telefono1, :telefono2, :celular, :email)');
-        return $stmt->execute($params);
+        try {
+            $stmt = $pdo->prepare('INSERT INTO instituciones (codigo_dane, nombre, direccion, tipo_sede, telefono1, telefono2, celular, email) VALUES (:codigo_dane, :nombre, :direccion, :tipo_sede, :telefono1, :telefono2, :celular, :email)');
+            return $stmt->execute($params);
+        } catch (\PDOException $e) {
+            return 'Error al crear la institución: ' . $e->getMessage();
+        }
     }
     // ...existing code...
 
@@ -96,22 +112,38 @@ class Institucion {
      * @param array $data Datos actualizados
      * @return bool True si la actualización fue exitosa, False en caso contrario
      */
+    /**
+     * Actualiza los datos de una institución con validación y manejo de errores.
+     * @param int $id
+     * @param array $data
+     * @return bool|string True si éxito, mensaje de error si falla
+     */
     public static function update($id, $data) {
         $pdo = Conexion::conectar();
+        if (empty($data['codigo_dane']) || empty($data['nombre']) || empty($data['direccion']) || empty($data['tipo_sede'])) {
+            return 'Todos los campos obligatorios deben estar completos.';
+        }
+        if (!empty($data['email']) && !filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+            return 'El correo electrónico no es válido.';
+        }
         $params = [
-            'codigo_dane' => $data['codigo_dane'] ?? '',
-            'nombre' => $data['nombre'] ?? '',
-            'direccion' => $data['direccion'] ?? '',
-            'tipo_sede' => $data['tipo_sede'] ?? '',
+            'codigo_dane' => htmlspecialchars(trim($data['codigo_dane'])),
+            'nombre' => htmlspecialchars(trim($data['nombre'])),
+            'direccion' => htmlspecialchars(trim($data['direccion'])),
+            'tipo_sede' => htmlspecialchars(trim($data['tipo_sede'])),
             'telefono1' => $data['telefono1'] ?? null,
             'telefono2' => $data['telefono2'] ?? null,
             'celular' => $data['celular'] ?? null,
             'email' => $data['email'] ?? null,
             'id' => $id
         ];
-        $sql = 'UPDATE instituciones SET codigo_dane=:codigo_dane, nombre=:nombre, direccion=:direccion, tipo_sede=:tipo_sede, telefono1=:telefono1, telefono2=:telefono2, celular=:celular, email=:email WHERE id=:id';
-        $stmt = $pdo->prepare($sql);
-        return $stmt->execute($params);
+        try {
+            $sql = 'UPDATE instituciones SET codigo_dane=:codigo_dane, nombre=:nombre, direccion=:direccion, tipo_sede=:tipo_sede, telefono1=:telefono1, telefono2=:telefono2, celular=:celular, email=:email WHERE id=:id';
+            $stmt = $pdo->prepare($sql);
+            return $stmt->execute($params);
+        } catch (\PDOException $e) {
+            return 'Error al actualizar la institución: ' . $e->getMessage();
+        }
     }
 
     /**

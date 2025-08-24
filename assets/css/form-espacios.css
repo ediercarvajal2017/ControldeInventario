@@ -1,31 +1,257 @@
-/* Botón profesional para ver factura (reutilizado de elementos) */
-.btn-ver-factura {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4em;
+/* Tabla profesional para el index de espacios */
+.tabla-elementos {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #f8fff4;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(25, 135, 84, 0.07);
+    margin: 2em 0;
+    overflow: hidden;
+}
+.tabla-elementos th {
+    background: linear-gradient(90deg, #b2f7ef 0%, #e3fcec 100%);
+    color: #198754;
+    font-size: 1.1em;
+    font-weight: bold;
+    padding: 1em 0.7em;
+    border-bottom: 2px solid #b7efc5;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+.tabla-elementos td {
+    padding: 0.8em 0.7em;
+    border-bottom: 1px solid #e0f7fa;
+    background: #fff;
+    color: #333;
+    font-size: 1em;
+    transition: background 0.2s;
+    text-align: center;
+}
+.tabla-elementos tr:hover td {
+    background: #2196f3 !important;
+    color: #fff !important;
+    transition: background 0.2s, color 0.2s;
+}
+.tabla-elementos tr:last-child td {
+    border-bottom: none;
+}
+.tabla-elementos th, .tabla-elementos td {
+    min-width: 60px;
+    max-width: none;
+    word-break: break-word;
+    white-space: normal;
+    height: auto;
+}
+/* Tabla profesional pastel para el listado de espacios */
+.tabla-elementos {
+    width: 100%;
+    table-layout: auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #f8fff4;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(25, 135, 84, 0.07);
+    margin: 2em 0;
+    overflow: hidden;
+}
+.tabla-elementos th {
+    background: linear-gradient(90deg, #b2f7ef 0%, #e3fcec 100%);
+    color: #198754;
+    font-size: 1.1em;
+    font-weight: bold;
+    padding: 1em 0.7em;
+    border-bottom: 2px solid #b7efc5;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+.tabla-elementos td {
+    padding: 0.8em 0.7em;
+    border-bottom: 1px solid #e0f7fa;
+    background: #fff;
+    color: #333;
+    font-size: 1em;
+    transition: background 0.2s;
+    text-align: center;
+}
+.tabla-elementos tr:hover td {
+    background: #2196f3 !important;
+    color: #fff !important;
+    transition: background 0.2s, color 0.2s;
+}
+.tabla-elementos tr:last-child td {
+    border-bottom: none;
+}
+.tabla-elementos th, .tabla-elementos td {
+    min-width: 40px;
+    max-width: 100vw;
+    word-break: break-word;
+    white-space: normal;
+    height: auto;
+}
+/* Título profesional y responsivo para el módulo espacios */
+.titulo-espacios {
+    font-size: 2.2rem;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    color: #198754;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-top: 2em;
+    margin-bottom: 1.2em;
+    text-align: center;
+    text-shadow: 0 2px 8px #b2f7ef88;
+    line-height: 1.1;
+    background: linear-gradient(90deg, #b2f7ef 0%, #e3fcec 100%);
+    border-radius: 12px;
+    padding: 0.5em 0.7em;
+    box-shadow: 0 1px 8px #b2f7ef33;
+    display: inline-block;
+    width: auto;
+    min-width: 60%;
+    max-width: 100%;
+}
+
+/* Mensajes de éxito y error visuales y animados */
+.mensaje-exito, .mensaje-error {
+    margin: 1.2em auto 0.7em auto;
+    padding: 0.7em 1.5em;
+    border-radius: 10px;
+    font-size: 1.15em;
+    font-weight: 700;
+    text-align: center;
+    box-shadow: 0 2px 12px #f7bfc633;
+    max-width: 500px;
+    animation: fadeIn 0.7s;
+    letter-spacing: 0.5px;
+}
+.mensaje-exito {
+    background: linear-gradient(90deg, #e3fcec 0%, #b2f7ef 100%);
+    color: #198754;
+    border: 2px solid #198754;
+}
+.mensaje-error {
+    background: linear-gradient(90deg, #fff0f3 0%, #f7bfc6 100%);
+    color: #d90429;
+    border: 2px solid #d90429;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mejoras de formulario: espaciado, responsividad y focus accesible */
+.form-espacio {
+    background: #f8fff4;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(25, 135, 84, 0.07);
+    padding: 2em 2.5em 1.5em 2.5em;
+    margin: 2em auto;
+    max-width: 480px;
+    border: 1.5px solid #b2f7ef;
+    transition: box-shadow 0.2s;
+}
+.form-espacio label {
+    display: block;
+    margin-bottom: 0.4em;
+    color: #198754;
+    font-weight: 600;
+    font-size: 1.05em;
+    letter-spacing: 0.2px;
+}
+.form-espacio input[type="text"] {
+    width: 100%;
+    padding: 0.6em 1em;
+    border: 1.5px solid #90e0ef;
+    border-radius: 6px;
+    background: #fff;
+    margin-bottom: 1.2em;
+    font-size: 1em;
+    color: #333;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+.form-espacio input[type="text"]:focus {
+    border-color: #198754;
+    outline: none;
+    box-shadow: 0 0 0 3px #b2f7ef88;
+}
+.form-espacio .btn-espacios {
     background: linear-gradient(90deg, #b2f7ef 0%, #e3fcec 100%);
     color: #0077b6;
     border: 1.5px solid #90e0ef;
     border-radius: 6px;
     font-weight: 700;
     font-size: 1em;
-    padding: 0.4em 1em;
-    text-decoration: none;
+    padding: 0.5em 1.5em;
+    cursor: pointer;
     box-shadow: 0 1px 6px #b2f7ef33;
-    transition: background 0.2s, color 0.2s, border 0.2s;
+    transition: background 0.2s, color 0.2s, border 0.2s, box-shadow 0.2s;
+    margin-top: 0.5em;
 }
-.btn-ver-factura i {
-    color: #198754;
-    font-size: 1.1em;
-}
-.btn-ver-factura:hover {
+.form-espacio .btn-espacios:hover, .form-espacio .btn-espacios:focus {
     background: #0077b6;
     color: #fff;
     border-color: #198754;
+    box-shadow: 0 2px 12px #b2f7ef88;
 }
-.btn-ver-factura:hover i {
+@media (max-width: 700px) {
+    .form-espacio {
+        padding: 1em 0.5em 1em 0.5em;
+        max-width: 98vw;
+    }
+    .titulo-espacios {
+        font-size: 1.3em;
+        padding: 0.5em 0.2em;
+        min-width: 90%;
+    }
+}
+/* Acciones y botones del módulo espacios (nomenclatura unificada) */
+.btn-espacios {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+    padding: 0.3em 0.7em;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    margin: 0 0.2em;
+}
+.btn-espacios-edit {
+    background: #e3fcec;
+    color: #198754;
+    border: 1px solid #b7efc5;
+}
+.btn-espacios-edit:hover {
+    background: #198754;
     color: #fff;
 }
+.btn-espacios-delete {
+    background: #fff0f3;
+    color: #d90429;
+    border: 1px solid #f7bfc6;
+}
+.btn-espacios-delete:hover {
+    background: #d90429;
+    color: #fff;
+}
+.btn-espacios-create {
+    background: #e0f7fa;
+    color: #0077b6;
+    border: 1px solid #b2e4f7;
+}
+.btn-espacios-create:hover {
+    background: #0077b6;
+    color: #fff;
+}
+.btn-espacios img {
+    width: 20px;
+    height: 20px;
+    margin-right: 0.2em;
+}
+
+
 /* Formulario pastel y profesional para espacios */
 .form-espacio {
     background: #f8fff4;
@@ -75,21 +301,4 @@
     color: #fff;
     border-color: #198754;
 }
-.mensaje-exito, .mensaje-error {
-    margin: 1em 0;
-    padding: 1em 1.5em;
-    border-radius: 8px;
-    font-size: 1.05em;
-    font-weight: 600;
-    box-shadow: 0 1px 6px #b2f7ef33;
-}
-.mensaje-exito {
-    background: #e3fcec;
-    color: #198754;
-    border: 1.5px solid #b2f7ef;
-}
-.mensaje-error {
-    background: #fff0f3;
-    color: #d32f2f;
-    border: 1.5px solid #f7b2b2;
-}
+

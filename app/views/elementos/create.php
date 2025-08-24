@@ -2,9 +2,11 @@
     // Vista: Crear elemento
     ob_start();
 ?>
-    <!-- Enlace a estilos específicos del formulario de elementos y asignaciones -->
-    <link rel="stylesheet" href="/ControldeInventario/public/assets/css/form-elementos.css">
-    <link rel="stylesheet" href="/ControldeInventario/public/assets/css/form-asignaciones.css">
+    <!-- Enlace a estilos unificados del módulo elementos -->
+    <link rel="stylesheet" href="<?= BASE_URL ?>assets/css/form-elementos.css">
+
+
+    <h2 class="titulo-elementos">Agregar Elemento</h2>
 
     <?php if (!empty($error)): ?>
         <div class="mensaje-error">
@@ -18,30 +20,28 @@
         </div>
     <?php endif; ?>
 
-    <h2 class="titulo-elementos">Agregar Elemento</h2>
-
-    <form action="/ControldeInventario/elementos/store" method="post" enctype="multipart/form-data" class="form-elemento form-asignacion">
+    <form action="<?= BASE_URL ?>elementos/store" method="post" enctype="multipart/form-data" class="form-elementos">
         <label for="codigo">Código:</label>
-        <input type="text" name="codigo" id="codigo" required value="<?= isset($_POST['codigo']) ? htmlspecialchars($_POST['codigo']) : '' ?>">
+    <input type="text" name="codigo" id="codigo-elementos" required value="<?= isset($_POST['codigo']) ? htmlspecialchars($_POST['codigo']) : '' ?>">
 
         <label for="descripcion">Descripción:</label>
-        <textarea name="descripcion" id="descripcion" required><?= isset($_POST['descripcion']) ? htmlspecialchars($_POST['descripcion']) : '' ?></textarea>
+    <textarea name="descripcion" id="descripcion-elementos" required><?= isset($_POST['descripcion']) ? htmlspecialchars($_POST['descripcion']) : '' ?></textarea>
 
         <label for="foto">Foto:</label>
-        <input type="file" name="foto" id="foto" accept="image/*" required>
+    <input type="file" name="foto" id="foto-elementos" accept="image/*" required>
 
         <label for="valor">Valor:</label>
-        <input type="number" name="valor" id="valor" required min="0" value="<?= isset($_POST['valor']) ? htmlspecialchars($_POST['valor']) : '' ?>">
+    <input type="number" name="valor" id="valor-elementos" required min="0" value="<?= isset($_POST['valor']) ? htmlspecialchars($_POST['valor']) : '' ?>" style="appearance: textfield; -moz-appearance: textfield; -webkit-appearance: textfield;">
 
-        <label for="factura">Factura:</label>
-        <input type="file" name="factura" id="factura" accept="application/pdf" required>
+    <label for="factura">Factura:</label>
+    <input type="file" name="factura" id="factura-elementos" accept="application/pdf" required>
 
         <label for="fecha_ingreso">Fecha de ingreso:</label>
-        <input type="date" name="fecha_ingreso" id="fecha_ingreso" required value="<?= isset($_POST['fecha_ingreso']) ? htmlspecialchars($_POST['fecha_ingreso']) : '' ?>">
+    <input type="date" name="fecha_ingreso" id="fecha-ingreso-elementos" required value="<?= isset($_POST['fecha_ingreso']) ? htmlspecialchars($_POST['fecha_ingreso']) : '' ?>">
 
-        <button type="submit" class="btn">Guardar</button>
+    <button type="submit" class="btn-elementos">Guardar</button>
     </form>
-<script src="/ControldeInventario/public/assets/js/elementos.js"></script>
+<script src="<?= BASE_URL ?>assets/js/elementos.js"></script>
 <script>
 // Ocultar mensaje de éxito/error después de 3.5 segundos
 setTimeout(function() {

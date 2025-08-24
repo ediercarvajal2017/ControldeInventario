@@ -4,8 +4,10 @@
 ob_start();
 ?>
 <!-- Enlace a estilos específicos del formulario de espacios y asignaciones -->
-<link rel="stylesheet" href="/ControldeInventario/public/assets/css/form-espacios.css">
-<link rel="stylesheet" href="/ControldeInventario/public/assets/css/form-asignaciones.css">
+<link rel="stylesheet" href="<?= BASE_URL ?>assets/css/form-espacios.css">
+<link rel="stylesheet" href="<?= BASE_URL ?>assets/css/form-asignaciones.css">
+
+<h2 class="titulo-espacios">Registrar Espacio Físico</h2>
 
 <?php if (!empty($error)): ?>
     <div class="mensaje-error">
@@ -19,16 +21,14 @@ ob_start();
     </div>
 <?php endif; ?>
 
-<h2 class="titulo-elementos">Registrar Espacio Físico</h2>
-
-<form action="/ControldeInventario/public/espacios/store" method="post" class="form-espacio form-asignacion">
+<form action="<?= BASE_URL ?>espacios/store" method="post" class="form-espacio">
     <label for="nombre">Nombre del Espacio:</label>
     <input type="text" name="nombre" id="nombre" required value="<?= isset($_POST['nombre']) ? htmlspecialchars($_POST['nombre']) : '' ?>">
 
     <label for="numeracion">Número del Espacio:</label>
     <input type="text" name="numeracion" id="numeracion" required value="<?= isset($_POST['numeracion']) ? htmlspecialchars($_POST['numeracion']) : '' ?>">
 
-    <button type="submit" class="btn">Guardar</button>
+    <button type="submit" class="btn-espacios btn-espacios-create">Guardar</button>
 </form>
 <script>
 // Ocultar mensaje de éxito/error después de 3.5 segundos

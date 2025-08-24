@@ -33,9 +33,16 @@ class InstitucionController {
             include __DIR__ . '/../views/instituciones/create.php';
             return;
         }
-        Institucion::create($data);
-        header('Location: /ControldeInventario/public/instituciones');
-        exit;
+        $resultado = Institucion::create($data);
+        if ($resultado === true) {
+            $_SESSION['mensaje_exito'] = 'Institución creada correctamente.';
+            header('Location: ' . BASE_URL . 'instituciones');
+            exit;
+        } else {
+            $error = is_string($resultado) ? $resultado : 'Error al crear la institución.';
+            include __DIR__ . '/../views/instituciones/create.php';
+            return;
+        }
     }
 
     // Muestra el formulario de edición
@@ -58,9 +65,17 @@ class InstitucionController {
             'celular' => $_POST['celular'] ?? null,
             'email' => $_POST['email'] ?? null
         ];
-        Institucion::update($id, $data);
-        header('Location: /ControldeInventario/public/instituciones');
-        exit;
+        $resultado = Institucion::update($id, $data);
+        if ($resultado === true) {
+            $_SESSION['mensaje_exito'] = 'Institución actualizada correctamente.';
+            header('Location: ' . BASE_URL . 'instituciones');
+            exit;
+        } else {
+            $error = is_string($resultado) ? $resultado : 'Error al actualizar la institución.';
+            $institucion = Institucion::getById($id);
+            include __DIR__ . '/../views/instituciones/edit.php';
+            return;
+        }
     }
 
     // Elimina una institución
@@ -68,13 +83,11 @@ class InstitucionController {
         $id = $_GET['id'] ?? null;
         $errorMsg = null;
         if (!Institucion::delete($id, $errorMsg)) {
-            // Mostrar mensaje de error en la vista de instituciones
-            $instituciones = \App\Models\Institucion::getAll();
-            $error = $errorMsg;
-            include __DIR__ . '/../views/instituciones/index.php';
-            return;
+            $_SESSION['mensaje_error'] = $errorMsg ?: 'No se pudo eliminar la institución.';
+        } else {
+            $_SESSION['mensaje_exito'] = 'Institución eliminada correctamente.';
         }
-        header('Location: /ControldeInventario/public/instituciones');
+        header('Location: ' . BASE_URL . 'instituciones');
         exit;
     }
 }

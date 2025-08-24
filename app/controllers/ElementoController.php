@@ -45,9 +45,9 @@ class ElementoController {
         // Procesar foto
         if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
             $nombreFoto = uniqid() . '_' . basename($_FILES['foto']['name']);
-            $destinoFoto = __DIR__ . '/../../public/uploads/' . $nombreFoto;
-            if (!is_dir(__DIR__ . '/../../public/uploads/')) {
-                mkdir(__DIR__ . '/../../public/uploads/', 0777, true);
+            $destinoFoto = __DIR__ . '/../../uploads/' . $nombreFoto;
+            if (!is_dir(__DIR__ . '/../../uploads/')) {
+                mkdir(__DIR__ . '/../../uploads/', 0777, true);
             }
             if (!move_uploaded_file($_FILES['foto']['tmp_name'], $destinoFoto)) {
                 $error .= "Error al subir la foto. ";
@@ -61,9 +61,9 @@ class ElementoController {
         // Procesar factura
         if (isset($_FILES['factura']) && $_FILES['factura']['error'] === UPLOAD_ERR_OK) {
             $nombreFactura = uniqid() . '_' . basename($_FILES['factura']['name']);
-            $destinoFactura = __DIR__ . '/../../public/uploads/' . $nombreFactura;
-            if (!is_dir(__DIR__ . '/../../public/uploads/')) {
-                mkdir(__DIR__ . '/../../public/uploads/', 0777, true);
+            $destinoFactura = __DIR__ . '/../../uploads/' . $nombreFactura;
+            if (!is_dir(__DIR__ . '/../../uploads/')) {
+                mkdir(__DIR__ . '/../../uploads/', 0777, true);
             }
             if (!move_uploaded_file($_FILES['factura']['tmp_name'], $destinoFactura)) {
                 $error .= "Error al subir la factura. ";
@@ -115,7 +115,8 @@ class ElementoController {
             ];
 
             if (\App\Models\Elemento::create($data)) {
-                header('Location: /ControldeInventario/elementos/create?exito=1');
+                require_once __DIR__ . '/../../config/config.php';
+                header('Location: ' . BASE_URL . 'elementos/create?exito=1');
                 exit;
             } else {
                 $error = "Ocurrió un error al registrar el elemento en la base de datos.";
@@ -158,9 +159,9 @@ class ElementoController {
         $ruta_foto = $elemento['foto'];
         if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
             $nombreFoto = uniqid() . '_' . basename($_FILES['foto']['name']);
-            $destinoFoto = __DIR__ . '/../../public/uploads/' . $nombreFoto;
-            if (!is_dir(__DIR__ . '/../../public/uploads/')) {
-                mkdir(__DIR__ . '/../../public/uploads/', 0777, true);
+            $destinoFoto = __DIR__ . '/../../uploads/' . $nombreFoto;
+            if (!is_dir(__DIR__ . '/../../uploads/')) {
+                mkdir(__DIR__ . '/../../uploads/', 0777, true);
             }
             if (move_uploaded_file($_FILES['foto']['tmp_name'], $destinoFoto)) {
                 $ruta_foto = 'uploads/' . $nombreFoto;
@@ -171,9 +172,9 @@ class ElementoController {
         $ruta_factura = $elemento['factura'];
         if (isset($_FILES['factura']) && $_FILES['factura']['error'] === UPLOAD_ERR_OK) {
             $nombreFactura = uniqid() . '_' . basename($_FILES['factura']['name']);
-            $destinoFactura = __DIR__ . '/../../public/uploads/' . $nombreFactura;
-            if (!is_dir(__DIR__ . '/../../public/uploads/')) {
-                mkdir(__DIR__ . '/../../public/uploads/', 0777, true);
+            $destinoFactura = __DIR__ . '/../../uploads/' . $nombreFactura;
+            if (!is_dir(__DIR__ . '/../../uploads/')) {
+                mkdir(__DIR__ . '/../../uploads/', 0777, true);
             }
             if (move_uploaded_file($_FILES['factura']['tmp_name'], $destinoFactura)) {
                 $ruta_factura = 'uploads/' . $nombreFactura;
@@ -193,7 +194,8 @@ class ElementoController {
             'usuario_registro_id' => $usuario_registro_id
         ];
         if (Elemento::update($id, $dataUpdate)) {
-            header('Location: /ControldeInventario/elementos/edit?id=' . $id . '&exito=1');
+            require_once __DIR__ . '/../../config/config.php';
+            header('Location: ' . BASE_URL . 'elementos/edit?id=' . $id . '&exito=1');
             exit;
         } else {
             $error = "Ocurrió un error al actualizar el elemento.";
@@ -203,7 +205,8 @@ class ElementoController {
 
     public function delete($id) {
     Elemento::delete($id); // Eliminar el elemento
-    header('Location: /ControldeInventario/elementos'); // Redirigir al listado
+    require_once __DIR__ . '/../../config/config.php';
+    header('Location: ' . BASE_URL . 'elementos'); // Redirigir al listado
     exit;
     }
 }

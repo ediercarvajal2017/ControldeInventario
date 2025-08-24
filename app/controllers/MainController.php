@@ -28,20 +28,27 @@ class MainController {
             }
         }
 
+
+        // Detectar base path automáticamente
+        $scriptName = str_replace('index.php', '', $_SERVER['SCRIPT_NAME']);
+        $basePath = rtrim($scriptName, '/');
+        $loginRoute = $basePath . '/login';
+        $logoutRoute = $basePath . '/logout';
+
         // Rutas públicas: login y logout
-    if ($route === '/ControldeInventario/login' && $method === 'GET') {
+        if ($route === $loginRoute && $method === 'GET') {
             require_once __DIR__ . '/AuthController.php';
             $controller = new \App\Controllers\AuthController();
             $controller->showLogin();
             return;
         }
-    if ($route === '/ControldeInventario/login' && $method === 'POST') {
+        if ($route === $loginRoute && $method === 'POST') {
             require_once __DIR__ . '/AuthController.php';
             $controller = new \App\Controllers\AuthController();
             $controller->login();
             return;
         }
-    if ($route === '/ControldeInventario/logout' && $method === 'GET') {
+        if ($route === $logoutRoute && $method === 'GET') {
             require_once __DIR__ . '/AuthController.php';
             $controller = new \App\Controllers\AuthController();
             $controller->logout();
@@ -49,9 +56,22 @@ class MainController {
         }
 
         // Proteger todas las rutas excepto login/logout
-    $rutasPublicas = ['/ControldeInventario/login', '/ControldeInventario/logout'];
-        if (!isset($_SESSION['usuario']) && !in_array($route, $rutasPublicas)) {
-            header('Location: /ControldeInventario/login');
+        $rutasPublicas = [$loginRoute, $logoutRoute];
+        // Normalizar rutas para comparación robusta (sin barra final, minúsculas)
+        $routeNorm = rtrim(strtolower($route), '/');
+        $loginNorm = rtrim(strtolower($loginRoute), '/');
+        $logoutNorm = rtrim(strtolower($logoutRoute), '/');
+        $rutasPublicasNorm = [$loginNorm, $logoutNorm];
+        if (!isset($_SESSION['usuario']) && !in_array($routeNorm, $rutasPublicasNorm)) {
+            // Log temporal para depuración
+            file_put_contents(__DIR__ . '/debug_rutas.log', date('Y-m-d H:i:s') . "\n" .
+                'route: ' . $route . "\n" .
+                'routeNorm: ' . $routeNorm . "\n" .
+                'loginRoute: ' . $loginRoute . "\n" .
+                'loginNorm: ' . $loginNorm . "\n" .
+                'rutasPublicasNorm: ' . print_r($rutasPublicasNorm, true) . "\n\n",
+                FILE_APPEND);
+            header('Location: ' . $loginRoute);
             exit;
         }
 
@@ -115,20 +135,34 @@ class MainController {
         }
 
         // Elementos
-        if (strpos($route, '/elementos') === 0) {
+        require_once __DIR__ . '/../../config/config.php';
+        $base = defined('BASE_URL') ? rtrim(BASE_URL, '/') : '';
+        if (strpos($route, $base . '/elementos') === 0) {
+            file_put_contents(
+                __DIR__ . '/debug_elementos.log',
+                date('Y-m-d H:i:s') .
+                "\nroute: " . $route .
+                "\nBASE_URL: " . (defined('BASE_URL') ? BASE_URL : 'NO DEFINIDO') .
+                "\nmethod: " . $method .
+                "\nREQUEST_URI: " . ($_SERVER['REQUEST_URI'] ?? '') .
+                "\nSCRIPT_NAME: " . ($_SERVER['SCRIPT_NAME'] ?? '') .
+                "\n---\n",
+                FILE_APPEND
+            );
             require_once __DIR__ . '/ElementoController.php';
             $controller = new \App\Controllers\ElementoController();
-            if ($route === '/elementos' && $method === 'GET') {
+            $routeSinBarra = rtrim($route, '/');
+            if ((($route === $base . '/elementos') || ($route === $base . '/elementos/')) && $method === 'GET') {
                 $controller->index();
-            } elseif ($route === '/elementos/create' && $method === 'GET') {
+            } elseif ((($route === $base . '/elementos/create') || ($route === $base . '/elementos/create/')) && $method === 'GET') {
                 $controller->create();
-            } elseif ($route === '/elementos/store' && $method === 'POST') {
+            } elseif ((($route === $base . '/elementos/store') || ($route === $base . '/elementos/store/')) && $method === 'POST') {
                 $controller->store($_POST);
-            } elseif ($route === '/elementos/edit' && $method === 'GET') {
+            } elseif (($routeSinBarra === $base . '/elementos/edit') && $method === 'GET') {
                 $controller->edit($_GET['id']);
-            } elseif ($route === '/elementos/update' && $method === 'POST') {
+            } elseif (($routeSinBarra === $base . '/elementos/update') && $method === 'POST') {
                 $controller->update($_GET['id'], $_POST);
-            } elseif ($route === '/elementos/delete' && $method === 'GET') {
+            } elseif (($routeSinBarra === $base . '/elementos/delete') && $method === 'GET') {
                 $controller->delete($_GET['id']);
             } else {
                 http_response_code(404); echo 'Ruta de elementos no encontrada.';
@@ -225,7 +259,10 @@ class MainController {
             return;
         }
 
-        // Página de inicio
-        include __DIR__ . '/../views/layout.php';
+    // Página de inicio
+    ob_start();
+    include __DIR__ . '/../views/index.php';
+    $content = ob_get_clean();
+    include __DIR__ . '/../views/layout.php';
     }
 }

@@ -15,10 +15,12 @@ class UsuarioController {
     }
 
     public function create() {
-    include __DIR__ . '/../views/usuarios/create.php';
+        include __DIR__ . '/../views/usuarios/create.php';
     }
 
     public function store($data) {
+        require_once __DIR__ . '/../../config/config.php';
+        if (session_status() === PHP_SESSION_NONE) session_start();
         $error = '';
         // Validación básica
         if (
@@ -31,28 +33,29 @@ class UsuarioController {
             empty($data['rol']) ||
             !isset($data['activo'])
         ) {
-            $error = "Todos los campos son obligatorios.";
-            include __DIR__ . '/../views/usuarios/create.php';
-            return;
+            $_SESSION['error'] = "Todos los campos son obligatorios.";
+            header('Location: ' . BASE_URL . 'usuarios/create');
+            exit;
         }
 
         // Intentar guardar
         $resultado = Usuario::create($data);
         if ($resultado === true) {
-            session_start();
             $_SESSION['exito'] = '¡Usuario registrado exitosamente!';
-            header('Location: /ControldeInventario/public/usuarios');
+            header('Location: ' . BASE_URL . 'usuarios');
             exit;
         } elseif ($resultado instanceof \PDOException) {
             if (strpos($resultado->getMessage(), 'Duplicate entry') !== false) {
-                $error = "Ya existe un usuario con el mismo documento o nombre de usuario.";
+                $_SESSION['error'] = "Ya existe un usuario con el mismo documento o nombre de usuario.";
             } else {
-                $error = "Ocurrió un error al registrar el usuario: " . $resultado->getMessage();
+                $_SESSION['error'] = "Ocurrió un error al registrar el usuario: " . $resultado->getMessage();
             }
-            include __DIR__ . '/../views/usuarios/create.php';
+            header('Location: ' . BASE_URL . 'usuarios/create');
+            exit;
         } else {
-            $error = "Ocurrió un error al registrar el usuario.";
-            include __DIR__ . '/../views/usuarios/create.php';
+            $_SESSION['error'] = "Ocurrió un error al registrar el usuario.";
+            header('Location: ' . BASE_URL . 'usuarios/create');
+            exit;
         }
     }
 
@@ -66,7 +69,8 @@ class UsuarioController {
     }
 
     public function update($id, $data) {
-        $error = '';
+        require_once __DIR__ . '/../../config/config.php';
+        if (session_status() === PHP_SESSION_NONE) session_start();
         if (
             empty($data['documento']) ||
             empty($data['nombres']) ||
@@ -76,30 +80,31 @@ class UsuarioController {
             empty($data['rol']) ||
             !isset($data['activo'])
         ) {
-            $usuario = Usuario::find($id);
-            $error = "Todos los campos son obligatorios.";
-            include __DIR__ . '/../views/usuarios/edit.php';
-            return;
+            $_SESSION['error'] = "Todos los campos son obligatorios.";
+            header('Location: ' . BASE_URL . 'usuarios/edit?id=' . urlencode($id));
+            exit;
         }
 
         if (Usuario::update($id, $data)) {
-            session_start();
             $_SESSION['exito'] = '¡Usuario actualizado exitosamente!';
-            header('Location: /ControldeInventario/public/usuarios');
+            header('Location: ' . BASE_URL . 'usuarios');
             exit;
         } else {
-            $usuario = Usuario::find($id);
-            $error = "Ocurrió un error al actualizar el usuario.";
-            include __DIR__ . '/../views/usuarios/edit.php';
+            $_SESSION['error'] = "Ocurrió un error al actualizar el usuario.";
+            header('Location: ' . BASE_URL . 'usuarios/edit?id=' . urlencode($id));
+            exit;
         }
     }
 
     public function delete($id) {
+        require_once __DIR__ . '/../../config/config.php';
+        if (session_status() === PHP_SESSION_NONE) session_start();
         if (Usuario::delete($id)) {
-            session_start();
             $_SESSION['exito'] = '¡Usuario eliminado exitosamente!';
+        } else {
+            $_SESSION['error'] = 'Ocurrió un error al eliminar el usuario.';
         }
-        header('Location: /ControldeInventario/public/usuarios');
+        header('Location: ' . BASE_URL . 'usuarios');
         exit;
     }
 }

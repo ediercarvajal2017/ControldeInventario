@@ -1,0 +1,366 @@
+/* Eliminados estilos heredados de elementos para independencia total del módulo movimientos */
+/* Acciones de movimiento */
+.movimientos-action-edit {
+    background: #e3fcec;
+    color: #198754;
+    border: 1px solid #b7efc5;
+}
+.movimientos-action-edit:hover {
+    background: #198754;
+    color: #fff;
+}
+.movimientos-action-delete {
+    background: #fff0f3;
+    color: #d90429;
+    border: 1px solid #f7bfc6;
+}
+.movimientos-action-delete:hover {
+    background: #d90429;
+    color: #fff;
+}
+.movimientos-action-create {
+    background: #e0f7fa;
+    color: #0077b6;
+    border: 1px solid #b2e4f7;
+}
+.movimientos-action-create:hover {
+    background: #0077b6;
+    color: #fff;
+}
+.movimientos-action-btn img {
+    width: 20px;
+    height: 20px;
+    margin-right: 0.2em;
+}
+/* === Estilos unificados y adaptados de form-asignaciones.css para independencia total === */
+/* Título y formulario de movimientos */
+h2.titulo-movimientos {
+    margin-top: 2.2em !important;
+    margin-bottom: 1.2em;
+    letter-spacing: 0.5px;
+    font-size: 2.3em;
+    font-weight: 800;
+    text-align: center;
+    background: linear-gradient(90deg, #b2f7ef 0%, #e3fcec 100%);
+    color: #198754;
+    border-radius: 14px;
+    padding: 0.5em 1.5em;
+    box-shadow: 0 2px 16px #b2f7ef33;
+    border: 2.5px solid #90e0ef;
+    max-width: 700px;
+    min-width: 220px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-shadow: 0 2px 8px #b2f7ef55;
+    z-index: 2;
+}
+.form-movimientos {
+    background: #f8fff4;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(25, 135, 84, 0.08);
+    padding: 2em 2.5em;
+    max-width: 500px;
+    margin: 2em auto;
+    border: 1px solid #b7efc5;
+}
+.form-movimientos label {
+    display: block;
+    margin-bottom: 0.5em;
+    color: #198754;
+    font-weight: 600;
+    background: linear-gradient(90deg, #b2f7ef 0%, #e3fcec 100%);
+    padding: 0.35em 0.9em;
+    border-radius: 7px;
+    box-shadow: 0 1px 4px #b2f7ef33;
+    margin-top: 0.7em;
+    font-size: 1.04em;
+    letter-spacing: 0.2px;
+}
+.form-movimientos input[type="text"],
+.form-movimientos input[type="number"],
+.form-movimientos input[type="file"],
+.form-movimientos input[type="date"],
+.form-movimientos select {
+    width: 100%;
+    padding: 0.5em;
+    margin-bottom: 1.2em;
+    border: 1px solid #b7efc5;
+    border-radius: 5px;
+    font-size: 1em;
+    background: #e3fcec;
+    color: #222;
+    transition: border 0.2s;
+}
+.form-movimientos input:focus,
+.form-movimientos select:focus {
+    border-color: #0077b6;
+    box-shadow: 0 0 0 4px #90e0ef, 0 0 10px 2px #0077b6cc;
+    outline: none;
+    background: #caf0f8;
+    color: #0077b6;
+    transition: border 0.2s, box-shadow 0.2s, background 0.2s, color 0.2s;
+    font-weight: 600;
+}
+/* Botón principal de movimientos */
+.form-movimientos .btn-movimiento,
+.btn-movimiento {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    background: #198754;
+    color: #fff;
+    border: 2px solid #198754;
+    padding: 0.65em 1.6em;
+    border-radius: 7px;
+    font-size: 1.08em;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 2px 8px #b2f7ef33;
+    transition: background 0.18s, color 0.18s, border 0.18s, box-shadow 0.18s;
+    margin-top: 0.5em;
+    text-decoration: none;
+}
+.form-movimientos .btn-movimiento:hover,
+.btn-movimiento:hover {
+    background: #145c32;
+    color: #fff;
+    border-color: #145c32;
+    box-shadow: 0 4px 16px #19875433;
+}
+/* Botón crear */
+.btn-movimiento.movimientos-action-create {
+    background: linear-gradient(90deg, #b2f7ef 0%, #e3fcec 100%);
+    color: #0077b6;
+    border: 2px solid #90e0ef;
+    box-shadow: 0 2px 8px #b2f7ef33;
+}
+.btn-movimiento.movimientos-action-create:hover {
+    background: #0077b6;
+    color: #fff;
+    border-color: #198754;
+}
+/* Botón editar */
+.btn-movimiento.movimientos-action-edit {
+    background: #e3fcec;
+    color: #198754;
+    border: 2px solid #b7efc5;
+}
+.btn-movimiento.movimientos-action-edit:hover {
+    background: #198754;
+    color: #fff;
+    border-color: #145c32;
+}
+/* Botón eliminar */
+.btn-movimiento.movimientos-action-delete {
+    background: #fff0f3;
+    color: #d90429;
+    border: 2px solid #f7bfc6;
+}
+.btn-movimiento.movimientos-action-delete:hover {
+    background: #d90429;
+    color: #fff;
+    border-color: #b3002d;
+}
+/* Botón profesional para ver factura */
+/* Botón profesional para ver factura en movimientos */
+.btn-movimiento-ver-factura {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    background: linear-gradient(90deg, #b2f7ef 0%, #e3fcec 100%);
+    color: #0077b6;
+    border: 1.5px solid #90e0ef;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 1em;
+    padding: 0.4em 1em;
+    text-decoration: none;
+    box-shadow: 0 1px 6px #b2f7ef33;
+    transition: background 0.2s, color 0.2s, border 0.2s;
+}
+.btn-movimiento-ver-factura i {
+    color: #198754;
+    font-size: 1.1em;
+}
+.btn-movimiento-ver-factura:hover {
+    background: #0077b6;
+    color: #fff;
+    border-color: #198754;
+}
+.btn-movimiento-ver-factura:hover i {
+    color: #fff;
+}
+/* Tabla profesional pastel para el listado de elementos */
+/* Tabla profesional pastel para el listado de movimientos */
+.tabla-movimientos {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #f8fff4;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(25, 135, 84, 0.07);
+    margin: 2em 0;
+    overflow: hidden;
+}
+/* Cabecera más compacta */
+.tabla-movimientos th {
+    background: linear-gradient(90deg, #b2f7ef 0%, #e3fcec 100%);
+    color: #198754;
+    font-size: 1em;
+    font-weight: bold;
+    padding: 0.55em 0.5em;
+    border-bottom: 2px solid #b7efc5;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+/* Filas más compactas */
+.tabla-movimientos td {
+    padding: 0.45em 0.5em;
+    border-bottom: 1px solid #e0f7fa;
+    background: #fff;
+    color: #333;
+    font-size: 0.98em;
+    transition: background 0.2s;
+    text-align: center;
+}
+.tabla-movimientos tr:hover td {
+    background: #2196f3 !important;
+    color: #fff !important;
+    transition: background 0.2s, color 0.2s;
+}
+.tabla-movimientos tr:last-child td {
+    border-bottom: none;
+}
+.tabla-movimientos th, .tabla-movimientos td {
+    min-width: 60px;
+    max-width: none;
+    word-break: break-word;
+    white-space: normal;
+    height: auto;
+}
+/* Separadores verticales profesionales para la tabla de elementos */
+/* Separadores verticales profesionales para la tabla de movimientos */
+.tabla-movimientos-separada {
+    border-collapse: separate;
+    border-spacing: 0;
+    position: relative;
+}
+.tabla-movimientos-separada th:not(:last-child),
+.tabla-movimientos-separada td:not(:last-child) {
+    border-right: 2px solid #b2f7ef;
+    position: relative;
+}
+.tabla-movimientos-separada th:not(:last-child)::after,
+.tabla-movimientos-separada td:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -1px;
+    width: 2px;
+    height: 100%;
+    background: #198754;
+    border-radius: 2px;
+    opacity: 0.95;
+    box-shadow: 0 0 6px #19875433;
+    pointer-events: none;
+}
+/* Mensaje de éxito visual para confirmación */
+/* Mensajes de éxito y error para movimientos */
+.mensaje-movimiento-exito {
+    background: linear-gradient(90deg, #fff0f3 0%, #f7bfc6 100%);
+    color: #d90429;
+    border: 2px solid #d90429;
+    border-radius: 10px;
+    font-size: 1.15em;
+    font-weight: 700;
+    text-align: center;
+    margin: 1.2em auto 0.7em auto;
+    padding: 0.7em 1.5em;
+    box-shadow: 0 2px 12px #f7bfc633;
+    max-width: 500px;
+    animation: fadeIn 0.7s;
+    letter-spacing: 0.5px;
+}
+.mensaje-movimiento-error {
+    background: linear-gradient(90deg, #fff0f3 0%, #f7bfc6 100%);
+    color: #d90429;
+    border: 2px solid #d90429;
+    border-radius: 10px;
+    font-size: 1.15em;
+    font-weight: 700;
+    text-align: center;
+    margin: 1.2em auto 0.7em auto;
+    padding: 0.7em 1.5em;
+    box-shadow: 0 2px 12px #f7bfc633;
+    max-width: 500px;
+    animation: fadeIn 0.7s;
+    letter-spacing: 0.5px;
+}
+/* Modal de confirmación profesional para eliminar elemento */
+/* Modal de confirmación profesional para eliminar movimiento */
+.modal-movimiento-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(217, 4, 41, 0.13);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s;
+}
+.modal-movimiento-confirmacion {
+    background: linear-gradient(120deg, #fff0f3 0%, #f7bfc6 100%);
+    border-radius: 18px;
+    box-shadow: 0 6px 32px #d9042944;
+    padding: 2.2em 2.5em 1.5em 2.5em;
+    text-align: center;
+    min-width: 320px;
+    max-width: 90vw;
+    border: 2px solid #d90429;
+}
+.modal-movimiento-confirmacion h3 {
+    color: #d90429;
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+}
+.modal-movimiento-confirmacion p {
+    color: #b3002d;
+    font-size: 1.08em;
+    margin-bottom: 1.2em;
+}
+.modal-movimiento-btns {
+    display: flex;
+    justify-content: center;
+    gap: 1.5em;
+}
+.modal-movimiento-btns .btn-movimiento {
+    padding: 0.7em 1.7em;
+    border-radius: 7px;
+    font-size: 1em;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+.btn-movimiento-cancelar {
+    background: #fff0f3;
+    color: #d90429;
+    border: 1px solid #f7bfc6;
+}
+.btn-movimiento-cancelar:hover {
+    background: #d90429;
+    color: #fff;
+}
+.btn-movimiento-eliminar {
+    background: #d90429;
+    color: #fff;
+    border: 1px solid #f7bfc6;
+}
+.btn-movimiento-eliminar:hover {
+    background: #fff0f3;
+    color: #d90429;
+}
+/* Eliminados estilos de otros módulos para independencia total */

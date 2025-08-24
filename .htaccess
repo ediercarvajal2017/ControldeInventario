@@ -1,24 +1,57 @@
+
+
 RewriteEngine On
-RewriteBase /ControldeInventario/
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php [QSA,L]
 
-# Permitir acceso directo a archivos en /uploads (PDF, imágenes, etc.)
-RewriteCond %{REQUEST_URI} ^/ControldeInventario/uploads/ [NC]
+# =============================
+# CABECERAS HTTP RECOMENDADAS
+# =============================
+# Seguridad
+Header set X-Content-Type-Options "nosniff"
+Header always set X-Frame-Options "SAMEORIGIN"
+Header set X-XSS-Protection "1; mode=block"
+Header set Referrer-Policy "strict-origin-when-cross-origin"
+Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+# Elimina cabeceras innecesarias
+Header unset X-Powered-By
+Header unset Server
+# Cache estática para recursos
+<FilesMatch "\.(ico|jpg|jpeg|png|gif|js|css|woff2|woff|ttf|svg)$">
+	Header set Cache-Control "public, max-age=31536000, immutable"
+</FilesMatch>
+# Tipos MIME correctos
+AddType font/woff2 .woff2
+AddType font/woff .woff
+AddType image/x-icon .ico
+AddType application/javascript .js
+AddType text/css .css
+# Forzar UTF-8
+AddDefaultCharset utf-8
+
+# Permitir acceso directo a archivos reales
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^ - [L]
-# Denegar acceso a archivos ocultos y de configuración
-<FilesMatch "^\.">
-    Require all denied
-</FilesMatch>
 
-# Bloquear acceso a archivos sensibles por extensión
-<FilesMatch "\.(htaccess|env|ini|log|sh|sql|bak)$">
-    Require all denied
-</FilesMatch>
+# Permitir acceso directo a recursos estáticos (assets, uploads, vendor)
+RewriteCond %{REQUEST_URI} ^/(assets|uploads|vendor)/ [NC]
+RewriteRule ^ - [L]
 
-# Bloquear acceso directo a todos los .php excepto index.php
-<Files ~ "^(?!index\.php$).+\.php$">
-    Require all denied
+# =============================
+# PROTECCIÓN DE CARPETAS SENSIBLES Y ARCHIVOS (compatible con .htaccess en WAMP)
+# =============================
+# Bloquear acceso a carpetas sensibles
+RewriteRule ^config/ - [F,L]
+RewriteRule ^vendor/ - [F,L]
+RewriteRule ^tests/ - [F,L]
+
+# Bloquear ejecución de scripts PHP en uploads (solo acceso web)
+RewriteRule ^uploads/.*\.(php|php5|phtml|phar)$ - [F,L,NC]
+
+# Proteger archivos de entorno
+<Files ".env">
+	Require all denied
 </Files>
+
+# Redirigir todo lo demás a index.php
+RewriteRule ^ index.php [QSA,L]
 

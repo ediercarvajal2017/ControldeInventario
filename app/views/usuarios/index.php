@@ -3,19 +3,22 @@ ob_start();
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-if (isset($_SESSION['exito'])) {
-    echo '<div class="alert alert-success">' . $_SESSION['exito'] . '</div>';
-    unset($_SESSION['exito']);
-}
 ?>
-<link rel="stylesheet" href="/ControldeInventario/assets/css/usuarios-actions.css">
-<h2>Usuarios</h2>
-<a href="/ControldeInventario/usuarios/create" class="usuarios-action-btn usuarios-action-create">
+<h2 class="titulo-usuarios">Usuarios</h2>
+<?php if (isset($_SESSION['exito'])): ?>
+    <div class="mensaje-exito"><?= htmlspecialchars($_SESSION['exito']) ?></div>
+    <?php unset($_SESSION['exito']); ?>
+<?php endif; ?>
+<?php if (isset($_SESSION['error'])): ?>
+    <div class="mensaje-error"><?= htmlspecialchars($_SESSION['error']) ?></div>
+    <?php unset($_SESSION['error']); ?>
+<?php endif; ?>
+<a href="<?= BASE_URL ?>usuarios/create" class="btn-usuario btn-usuario-create" style="margin-bottom:1.5em;">
     <i class="fa fa-plus-circle"></i>
-    <img src="/ControldeInventario/assets/img/add.png" alt="Crear" />
     Nuevo Usuario
 </a>
-<table>
+<div class="tabla-responsive">
+<table class="tabla-usuarios">
     <thead>
         <tr>
             <th>ID</th>
@@ -23,7 +26,6 @@ if (isset($_SESSION['exito'])) {
             <th>Nombres</th>
             <th>Apellidos</th>
             <th>Cargo</th>
-            <th>Institución</th>
             <th>Usuario</th>
             <th>Rol</th>
             <th>Activo</th>
@@ -38,19 +40,16 @@ if (isset($_SESSION['exito'])) {
                 <td><?= htmlspecialchars($usuario['nombres']) ?></td>
                 <td><?= htmlspecialchars($usuario['apellidos']) ?></td>
                 <td><?= htmlspecialchars($usuario['cargo']) ?></td>
-                <!-- Eliminado campo institucion_id -->
                 <td><?= htmlspecialchars($usuario['username']) ?></td>
                 <td><?= htmlspecialchars($usuario['rol']) ?></td>
                 <td><?= $usuario['activo'] ? 'Sí' : 'No' ?></td>
                 <td>
-                    <a href="/ControldeInventario/usuarios/edit?id=<?= $usuario['id'] ?>" class="usuarios-action-btn usuarios-action-edit">
+                    <a href="<?= BASE_URL ?>usuarios/edit?id=<?= $usuario['id'] ?>" class="btn-usuario btn-usuario-edit">
                         <i class="fa fa-pen-to-square"></i>
-                        <img src="/ControldeInventario/assets/img/edit.png" alt="Editar" />
                         Editar
                     </a>
-                    <a href="/ControldeInventario/usuarios/delete?id=<?= $usuario['id'] ?>" class="usuarios-action-btn usuarios-action-delete" onclick="return confirm('¿Eliminar usuario?')">
+                    <a href="<?= BASE_URL ?>usuarios/delete?id=<?= $usuario['id'] ?>" class="btn-usuario btn-usuario-delete" onclick="return confirm('¿Eliminar usuario?')">
                         <i class="fa fa-trash"></i>
-                        <img src="/ControldeInventario/assets/img/delete.png" alt="Eliminar" />
                         Eliminar
                     </a>
                 </td>
@@ -58,6 +57,7 @@ if (isset($_SESSION['exito'])) {
         <?php endforeach; ?>
     </tbody>
 </table>
+</div>
 <?php
 $content = ob_get_clean();
 include __DIR__ . '/../layout.php';

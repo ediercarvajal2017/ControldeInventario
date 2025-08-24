@@ -22,6 +22,7 @@ class EspacioController {
     }
 
     public function store() {
+        require_once __DIR__ . '/../../config/config.php';
         $error = '';
         if (
             empty($_POST['nombre']) ||
@@ -38,9 +39,9 @@ class EspacioController {
         ];
 
         if (Espacio::create($data)) {
-            session_start();
+            if (session_status() === PHP_SESSION_NONE) session_start();
             $_SESSION['exito'] = '¡Espacio registrado exitosamente!';
-            header('Location: /ControldeInventario/public/espacios');
+            header('Location: ' . BASE_URL . 'espacios');
             exit;
         } else {
             $error = "Ocurrió un error al registrar el espacio.";
@@ -54,6 +55,7 @@ class EspacioController {
     }
 
     public function update($id) {
+        require_once __DIR__ . '/../../config/config.php';
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $nombre = $_POST['nombre'] ?? '';
             $numeracion = $_POST['numeracion'] ?? '';
@@ -61,14 +63,19 @@ class EspacioController {
                 'nombre' => $nombre,
                 'numeracion' => $numeracion
             ]);
-            header('Location: /ControldeInventario/public/espacios');
+            if (session_status() === PHP_SESSION_NONE) session_start();
+            $_SESSION['exito'] = '¡Espacio actualizado exitosamente!';
+            header('Location: ' . BASE_URL . 'espacios');
             exit;
         }
     }
 
     public function delete($id) {
+        require_once __DIR__ . '/../../config/config.php';
         Espacio::delete($id);
-        header('Location: /ControldeInventario/public/espacios');
+        if (session_status() === PHP_SESSION_NONE) session_start();
+        $_SESSION['exito'] = '¡Espacio eliminado exitosamente!';
+        header('Location: ' . BASE_URL . 'espacios');
         exit;
     }
 }

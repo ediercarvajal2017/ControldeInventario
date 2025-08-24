@@ -3,8 +3,8 @@
     // Vista: Crear movimiento
     ob_start();
 ?>
-    <h2>Nuevo Movimiento</h2>
-    <form action="/ControldeInventario/public/movimientos/store" method="post" class="formulario">
+    <h2 class="titulo-movimientos">Nuevo Movimiento</h2>
+        <form action="<?= rtrim(BASE_URL, '/') ?>/movimientos/store" method="post" class="form-movimientos">
         <label for="elemento_id">Elemento:</label>
         <input type="number" name="elemento_id" id="elemento_id" required>
         <label for="tipo_movimiento">Tipo de movimiento:</label>
@@ -28,6 +28,6 @@
         <input type="number" name="usuario_movimiento_id" id="usuario_movimiento_id" required>
         <label for="destino">Destino:</label>
         <input type="text" name="destino" id="destino">
-        <button type="submit" class="btn">Guardar</button>
+        <button type="submit" class="btn-movimiento movimientos-action-create">Guardar</button>
     </form>
 <?php $content = ob_get_clean(); include __DIR__ . '/../layout.php'; ?>

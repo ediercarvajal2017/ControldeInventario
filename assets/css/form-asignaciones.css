@@ -1,3 +1,112 @@
+/* Grid de dos columnas para el formulario de nueva asignación */
+.form-grid-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2em 2em;
+    align-items: end;
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.5em;
+}
+@media (max-width: 700px) {
+    .form-grid-2col {
+        grid-template-columns: 1fr;
+    }
+}
+/* Tabla profesional para el formulario de asignaciones */
+.tabla-asignaciones {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: #f8fff4;
+    border-radius: 12px;
+    box-shadow: 0 2px 12px rgba(25, 135, 84, 0.07);
+    margin: 2em 0;
+    overflow: hidden;
+}
+.tabla-asignaciones th {
+    background: linear-gradient(90deg, #b2f7ef 0%, #e3fcec 100%);
+    color: #198754;
+    font-size: 1.1em;
+    font-weight: bold;
+    padding: 1em 0.7em;
+    border-bottom: 2px solid #b7efc5;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+.tabla-asignaciones td {
+    padding: 0.8em 0.7em;
+    border-bottom: 1px solid #e0f7fa;
+    background: #fff;
+    color: #333;
+    font-size: 1em;
+    transition: background 0.2s;
+    text-align: center;
+}
+.tabla-asignaciones tr:hover td {
+    background: #2196f3 !important;
+    color: #fff !important;
+    transition: background 0.2s, color 0.2s;
+}
+.tabla-asignaciones tr:last-child td {
+    border-bottom: none;
+}
+.tabla-asignaciones th, .tabla-asignaciones td {
+    min-width: 60px;
+    max-width: none;
+    word-break: break-word;
+    white-space: normal;
+    height: auto;
+}
+/* Botones de acción unificados para el módulo asignaciones */
+.btn-asignaciones {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3em;
+    padding: 0.3em 0.7em;
+    border-radius: 5px;
+    font-size: 1em;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+    margin: 0 0.2em;
+    border: 1.5px solid #b2f7ef;
+}
+.btn-asignaciones-create {
+    background: #e0f7fa;
+    color: #0077b6;
+    border: 1px solid #b2e4f7;
+}
+.btn-asignaciones-create:hover {
+    background: #0077b6;
+    color: #fff;
+}
+.btn-asignaciones-edit {
+    background: #e3fcec;
+    color: #198754;
+    border: 1px solid #b7efc5;
+}
+.btn-asignaciones-edit:hover {
+    background: #198754;
+    color: #fff;
+}
+.btn-asignaciones-delete {
+    background: #fff0f3;
+    color: #d90429;
+    border: 1px solid #f7bfc6;
+}
+.btn-asignaciones-delete:hover {
+    background: #d90429;
+    color: #fff;
+}
+.btn-asignaciones img {
+    width: 20px;
+    height: 20px;
+    margin-right: 0.2em;
+}
 /* Mensaje de error visual para confirmación */
 .mensaje-error {
     background: linear-gradient(90deg, #fff0f3 0%, #f7bfc6 100%);
@@ -156,51 +265,6 @@
     opacity: 0.95;
     box-shadow: 0 0 6px #19875433;
     pointer-events: none;
-}
-/* Estilos para la tabla de asignaciones */
-.tabla-asignaciones {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    background: #f8fff4;
-    border-radius: 12px;
-    box-shadow: 0 2px 12px rgba(25, 135, 84, 0.07);
-    margin: 2em 0;
-    overflow: hidden;
-}
-.tabla-asignaciones th {
-    background: linear-gradient(90deg, #b2f7ef 0%, #e3fcec 100%);
-    color: #198754;
-    font-size: 1.1em;
-    font-weight: bold;
-    padding: 1em 0.7em;
-    border-bottom: 2px solid #b7efc5;
-    text-align: center;
-    letter-spacing: 0.5px;
-}
-.tabla-asignaciones td {
-    padding: 0.8em 0.7em;
-    border-bottom: 1px solid #e0f7fa;
-    background: #fff;
-    color: #333;
-    font-size: 1em;
-    transition: background 0.2s;
-    text-align: center;
-}
-.tabla-asignaciones tr:hover td {
-    background: #2196f3 !important; /* azul visible */
-    color: #fff !important;
-    transition: background 0.2s, color 0.2s;
-}
-.tabla-asignaciones tr:last-child td {
-    border-bottom: none;
-}
-.tabla-asignaciones th, .tabla-asignaciones td {
-    min-width: 60px;
-    max-width: none;
-    word-break: break-word;
-    white-space: normal;
-    height: auto;
 }
 /* Estilos específicos para el formulario de asignaciones */
 .form-asignacion {

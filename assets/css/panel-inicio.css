@@ -1,0 +1,87 @@
+/* Estilos mejorados para el panel de tarjetas de acceso rápido en la portada */
+.panel-acceso {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2.5em;
+  margin: 2.5em 0 0 0;
+}
+.tarjeta-modulo {
+  background: #b9f6ca;
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+  font-weight: bold;
+  text-decoration: none !important;
+  color: inherit;
+  border-radius: 1.2em;
+  box-shadow: 0 4px 24px rgba(76,175,80,0.13), 0 1.5px 6px rgba(0,0,0,0.07);
+  padding: 2.2em 1.7em 1.7em 1.7em;
+  min-width: 200px;
+  max-width: 240px;
+  text-align: center;
+  transition: transform 0.18s, box-shadow 0.18s, border 0.18s;
+  cursor: pointer;
+  border: 2.5px solid #43a047;
+  position: relative;
+  overflow: hidden;
+}
+.tarjeta-modulo:before {
+  content: '';
+  position: absolute;
+  top: -40px; left: -40px;
+  width: 80px; height: 80px;
+  background: rgba(76,175,80,0.13);
+  border-radius: 50%;
+  z-index: 0;
+}
+.tarjeta-modulo:hover {
+  transform: translateY(-10px) scale(1.045);
+  box-shadow: 0 10px 32px rgba(76,175,80,0.18), 0 2px 8px rgba(0,0,0,0.10);
+  border-color: #388e3c;
+  background: #69f0ae;
+  text-decoration: none !important;
+  color: inherit;
+}
+.tarjeta-modulo .icono-modulo {
+  font-size: 4em;
+  margin-bottom: 0.7em;
+  color: #198754;
+  z-index: 1;
+  position: relative;
+  filter: drop-shadow(0 2px 2px #b2dfdb);
+}
+.tarjeta-modulo .nombre-modulo {
+  font-size: 1.22em;
+  font-weight: 800;
+  color: #15605c;
+  margin-bottom: 0.25em;
+  letter-spacing: 0.5px;
+  z-index: 1;
+  position: relative;
+.tarjeta-modulo .nombre-modulo {
+  font-size: 1.28em;
+  font-weight: 900;
+  color: #b71c1c;
+  margin-bottom: 0.25em;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px #fff, 0 1px 0 #d32f2f;
+  z-index: 1;
+  position: relative;
+  text-transform: uppercase;
+}
+.tarjeta-modulo .desc-modulo {
+  font-size: 1em;
+  color: #4b636e;
+  z-index: 1;
+  position: relative;
+}
+@media (max-width: 700px) {
+  .panel-acceso {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5em;
+  }
+  .tarjeta-modulo {
+    min-width: 85vw;
+    max-width: 98vw;
+  }
+}

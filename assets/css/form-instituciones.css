@@ -1,0 +1,314 @@
+/* === Estilos copiados y adaptados para independencia del formulario de instituciones === */
+.formulario {
+	background: #fff;
+	border-radius: 14px;
+	box-shadow: 0 2px 16px #b2f7ef33;
+	padding: 2.2em 2.5em 1.5em 2.5em;
+	max-width: 600px;
+	min-width: 320px;
+	margin: 2.5em auto 2em auto;
+	display: flex;
+	flex-direction: column;
+	gap: 1.1em;
+}
+.formulario label {
+	font-weight: 600;
+	color: #0077b6;
+	margin-bottom: 0.2em;
+	letter-spacing: 0.2px;
+}
+.form-row {
+	display: flex;
+	gap: 1.2em;
+	flex-wrap: wrap;
+}
+.form-group {
+	flex: 1 1 220px;
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 0.7em;
+}
+.input-text, .input-select {
+	padding: 0.6em 1em;
+	border-radius: 7px;
+	border: 1.5px solid #90e0ef;
+	font-size: 1.08em;
+	background: #f8fff4;
+	color: #222;
+	margin-bottom: 0.5em;
+	transition: border 0.2s;
+}
+.input-text:focus, .input-select:focus {
+	border: 2px solid #0077b6;
+	outline: none;
+}
+@media (max-width: 700px) {
+	.formulario {
+		padding: 1.2em 0.7em 1em 0.7em;
+		min-width: unset;
+	}
+	.form-row {
+		flex-direction: column;
+		gap: 0.7em;
+	}
+}
+/* Botón global para enlaces y botones de instituciones */
+.btn-institucion {
+	background: linear-gradient(90deg, #1976d2 0%, #2196f3 100%);
+	color: #fff;
+	border: none;
+	padding: 0.7em 1.7em;
+	border-radius: 6px;
+	font-size: 1.08em;
+	font-weight: 700;
+	cursor: pointer;
+	box-shadow: 0 2px 8px rgba(25, 118, 210, 0.10);
+	letter-spacing: 0.5px;
+	margin: 0.7em auto 0.7em auto;
+	transition: background 0.2s, box-shadow 0.2s;
+	text-decoration: none;
+	display: block;
+	max-width: 320px;
+	-webkit-user-select: none;
+	user-select: none;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	text-size-adjust: 100%;
+}
+.btn-institucion:hover, .btn-institucion:focus {
+	background: linear-gradient(90deg, #1565c0 0%, #1976d2 100%);
+	box-shadow: 0 4px 16px rgba(25, 118, 210, 0.18);
+	color: #fff;
+	text-decoration: none;
+	-webkit-user-select: none;
+	user-select: none;
+}
+/* =============================
+   Estilos exclusivos módulo Instituciones 
+   Inspirados en módulo Elementos, pero con nombres de clase propios
+   ============================= */
+
+.titulo-instituciones {
+	font-size: 2.3rem;
+	font-family: 'Segoe UI', Arial, sans-serif;
+	color: #0077b6;
+	font-weight: 800;
+	letter-spacing: 1px;
+	margin-top: 1.2em;
+	margin-bottom: 0.7em;
+	text-align: center;
+	text-shadow: 0 2px 8px #b2f7ef88;
+	line-height: 1.1;
+	background: linear-gradient(90deg, #b2f7ef 0%, #e3fcec 100%);
+	border-radius: 12px;
+	padding: 0.5em 0.7em;
+	box-shadow: 0 1px 8px #b2f7ef33;
+	display: inline-block;
+	width: auto;
+	min-width: 60%;
+	max-width: 100%;
+}
+
+.form-institucion {
+	background: #f1f8ff;
+	border-radius: 10px;
+	box-shadow: 0 2px 8px rgba(0, 119, 182, 0.08);
+	padding: 2em 2.5em;
+	max-width: 600px;
+	margin: 2em auto;
+	border: 1px solid #b2e4f7;
+	-webkit-user-select: auto;
+	user-select: auto;
+}
+.form-institucion label {
+	display: block;
+	margin-bottom: 0.5em;
+	color: #0077b6;
+	font-weight: 600;
+}
+.form-institucion .btn-institucion {
+	background: linear-gradient(90deg, #1976d2 0%, #2196f3 100%);
+	color: #fff;
+	border: none;
+	padding: 0.7em 1.7em;
+	border-radius: 6px;
+	font-size: 1.08em;
+	font-weight: 700;
+	cursor: pointer;
+	box-shadow: 0 2px 8px rgba(25, 118, 210, 0.10);
+	letter-spacing: 0.5px;
+	margin-top: 0.7em;
+	transition: background 0.2s, box-shadow 0.2s;
+}
+
+
+.form-institucion input[type="text"],
+.form-institucion input[type="email"],
+.form-institucion input[type="number"],
+.form-institucion input[type="file"],
+.form-institucion input[type="date"],
+.form-institucion select {
+	width: 100%;
+	padding: 0.5em;
+	margin-bottom: 1.2em;
+	border: 1px solid #90e0ef;
+	border-radius: 5px;
+	font-size: 1em;
+	background: #e0f7fa;
+	color: #222;
+	transition: border 0.2s;
+}
+.form-institucion input:focus,
+.form-institucion select:focus {
+	border-color: #0077b6;
+	outline: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.form-institucion .btn-institucion:hover, .form-institucion .btn-institucion:focus {
+	background: linear-gradient(90deg, #1565c0 0%, #1976d2 100%);
+	box-shadow: 0 4px 16px rgba(25, 118, 210, 0.18);
+	color: #fff;
+}
+
+.tabla-instituciones {
+	width: 100%;
+	border-collapse: separate;
+	border-spacing: 0;
+	background: #f8fff4;
+	border-radius: 12px;
+	box-shadow: 0 2px 12px rgba(0, 119, 182, 0.07);
+	margin: 2em 0;
+	overflow: hidden;
+}
+.tabla-instituciones th {
+	background: linear-gradient(90deg, #b2f7ef 0%, #e3fcec 100%);
+	color: #0077b6;
+	font-size: 1.1em;
+	font-weight: bold;
+	padding: 1em 0.7em;
+	border-bottom: 2px solid #b7efc5;
+	text-align: center;
+	letter-spacing: 0.5px;
+}
+.tabla-instituciones td {
+	padding: 0.8em 0.7em;
+	border-bottom: 1px solid #e0f7fa;
+	background: #fff;
+	color: #333;
+	font-size: 1em;
+	transition: background 0.2s;
+	text-align: center;
+}
+.tabla-instituciones tr:hover td {
+	background: #0077b6 !important;
+	color: #fff !important;
+	transition: background 0.2s, color 0.2s;
+	-webkit-user-select: text;
+	user-select: text;
+}
+.tabla-instituciones tr:last-child td {
+	border-bottom: none;
+}
+.tabla-instituciones th, .tabla-instituciones td {
+	min-width: 60px;
+	max-width: none;
+	word-break: break-word;
+	white-space: normal;
+	height: auto;
+}
+
+.mensaje-exito-institucion {
+	background: linear-gradient(90deg, #fff0f3 0%, #b2f7ef 100%);
+	color: #0077b6;
+	border: 2px solid #0077b6;
+	border-radius: 10px;
+	font-size: 1.15em;
+	font-weight: 700;
+	text-align: center;
+	margin: 1.2em auto 0.7em auto;
+	padding: 0.7em 1.5em;
+	box-shadow: 0 2px 12px #b2f7ef33;
+	max-width: 500px;
+	animation: fadeIn 0.7s;
+	letter-spacing: 0.5px;
+}
+.mensaje-error-institucion {
+	background: linear-gradient(90deg, #fff0f3 0%, #b2f7ef 100%);
+	color: #d90429;
+	border: 2px solid #d90429;
+	border-radius: 10px;
+	font-size: 1.15em;
+	font-weight: 700;
+	text-align: center;
+	margin: 1.2em auto 0.7em auto;
+	padding: 0.7em 1.5em;
+	box-shadow: 0 2px 12px #f7bfc633;
+	max-width: 500px;
+	animation: fadeIn 0.7s;
+	letter-spacing: 0.5px;
+}
+
+.acciones-institucion {
+	display: flex;
+	gap: 0.3rem;
+	justify-content: center;
+	align-items: center;
+}
+.btn-editar-institucion {
+	background: #e3fcec;
+	color: #0077b6;
+	border: 1px solid #b2e4f7;
+	border-radius: 5px;
+	padding: 0.3em 1em;
+	font-weight: 600;
+	transition: background 0.2s, color 0.2s;
+	margin-right: 0.2em;
+	cursor: pointer;
+}
+.btn-editar-institucion:hover {
+	background: #0077b6;
+	color: #fff;
+}
+.btn-eliminar-institucion {
+	background: #fff0f3;
+	color: #d90429;
+	border: 1px solid #f7bfc6;
+	border-radius: 5px;
+	padding: 0.3em 1em;
+	font-weight: 600;
+	transition: background 0.2s, color 0.2s;
+	cursor: pointer;
+}
+.btn-eliminar-institucion:hover {
+	background: #d90429;
+	color: #fff;
+}
+
+@media (max-width: 700px) {
+	.form-institucion {
+		padding: 1em 0.5em;
+	}
+	.tabla-instituciones th, .tabla-instituciones td {
+		padding: 0.5rem 0.4rem;
+		font-size: 0.97rem;
+	}
+	.acciones-institucion {
+		flex-direction: column;
+		gap: 0.2rem;
+	}
+}
